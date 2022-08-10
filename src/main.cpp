@@ -5,9 +5,8 @@
 #include <ostream>
 
 int main() {
-
      // Finding window handle by using the window name (not process name, so no exe)
-    HWND WindowHandle = FindWindowA(NULL, "window name here");
+    HWND WindowHandle = FindWindowA(NULL, "WWE 2K19");
     if (!WindowHandle) {printf("Failed to get WindowHandle"); return 1;};
     printf("Window handle \n >DEC %d \n >HEX %x \n\n", WindowHandle, WindowHandle);
 
@@ -74,4 +73,6 @@ int main() {
     printf(" >> %x\n", modInfo.lpBaseOfDll);
     printf(" >SizeOfImage\n");
     printf(" >> %d\n", modInfo.SizeOfImage);
+    //14252E158
+    return 0;
 }

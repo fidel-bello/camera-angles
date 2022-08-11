@@ -3,10 +3,22 @@
 #include <winuser.h>
 #include <psapi.h>
 #include <ostream>
+#include <vector>
+
+// helper function takes in handle, ptr, and pointer offsets, can be found using cheat engine P->???
+// traverse the pointer offsets to "jump" from the offsets and find the dynamic address
+uintptr_t findAddress(HANDLE handle, uintptr_t ptr, std::vector<unsigned int>offsets){
+    uintptr_t addr = ptr;
+    for (unsigned int i = 0; i < offsets.size(); ++i){
+        ReadProcessMemory(handle, (BYTE*)addr, &addr, sizeof(addr), nullptr);
+        addr += offsets[i];
+    }
+    return addr;
+}
 
 int main() {
      // Finding window handle by using the window name (not process name, so no exe)
-    HWND WindowHandle = FindWindowA(NULL, "WWE 2K19");
+    HWND WindowHandle = FindWindowA(NULL, "WWE 2K22");
     if (!WindowHandle) {printf("Failed to get WindowHandle"); return 1;};
     printf("Window handle \n >DEC %d \n >HEX %x \n\n", WindowHandle, WindowHandle);
 
@@ -73,6 +85,14 @@ int main() {
     printf(" >> %x\n", modInfo.lpBaseOfDll);
     printf(" >SizeOfImage\n");
     printf(" >> %d\n", modInfo.SizeOfImage);
+
+    uintptr_t cameraPtr = (uintptr_t)(modInfo.lpBaseOfDll) + 0x036ED358;
+    std::vector<unsigned int> offsets = { 0x20, 0x28, 0x28, 0x18, 0x178 };
+    uintptr_t pointerAddy = findAddress(l_handle, cameraPtr, offsets);
+    std::cout << "zoom address = "<< std::hex << pointerAddy << "\n";
+
+
+
     //14252E158
     return 0;
 }

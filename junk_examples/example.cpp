@@ -78,7 +78,5 @@ int main()
     printf(" >> %x\n", modInfo.lpBaseOfDll);
     printf(" >SizeOfImage\n");
     printf(" >> %d\n", modInfo.SizeOfImage);
-
-
     return 0;
 }

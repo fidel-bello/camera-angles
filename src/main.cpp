@@ -3,18 +3,13 @@
  *
  * */
 #include "./hack_file/camera_hack.h"
-
-//for testing
-void print_cameraStructs(const std::vector<unsigned int>& cameraStruct){
-    for(unsigned int i : cameraStruct)
-        std::cout <<  std::hex << i << " ";
-    std::cout << "\n";
-}
+#include "./helpers/helper.cpp"
 
 int main(){
     COORDS coords;
-    auto hack = *new camera_hack("game window here");
+    auto hack = *new camera_hack("WWE 2k19");
     hack.findProcessID();
+    hack.open_process();
     print_cameraStructs(coords.zoom);
     print_cameraStructs(coords.rotation);
     print_cameraStructs(coords.heightRotation);

@@ -30,10 +30,12 @@ class camera_hack {
 private:
     HWND window_name{};
     DWORD processID{};
+    HANDLE l_handle{};
 public:
     explicit camera_hack(const char *window_handle);
     ~camera_hack();
     bool findProcessID();
+    int open_process();
 };
 
 

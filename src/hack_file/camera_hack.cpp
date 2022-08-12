@@ -18,7 +18,7 @@ camera_hack::~camera_hack() {
 bool camera_hack::findProcessID() {
     GetWindowThreadProcessId(window_name, &processID);
     if(processID == 0) {
-        printf("\nFailed to get procID from HWND");
+        printf("\nFailed to get procID from HWND\n");
         return true;
     }
     printf("\nProcess handle \n >DEC %lu \n >HEX %lx \n\n", processID, processID);

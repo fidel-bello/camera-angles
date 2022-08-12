@@ -90,9 +90,6 @@ int main() {
     std::vector<unsigned int> offsets = { 0x20, 0x28, 0x28, 0x18, 0x178 };
     uintptr_t pointerAddy = findAddress(l_handle, cameraPtr, offsets);
     std::cout << "zoom address = "<< std::hex << pointerAddy << "\n";
-
-
-
     //14252E158
     return 0;
 }

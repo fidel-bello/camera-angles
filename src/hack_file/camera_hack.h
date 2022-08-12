@@ -19,9 +19,9 @@ private:
     DWORD processID{};
 public:
     explicit camera_hack(const char *window_handle);
-    bool findProcessID();
     ~camera_hack();
 
+    bool findProcessID();
 };
 
 

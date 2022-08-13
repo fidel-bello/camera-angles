@@ -9,6 +9,7 @@
   ## Description
     * This mod is a dll injector written in c++
     * for educational purposes
+    - [x] hello
 
   ## Installation
     * this project is compiled with mingw

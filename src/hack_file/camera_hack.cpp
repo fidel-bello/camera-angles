@@ -10,7 +10,8 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wformat"
 
-camera_hack::camera_hack(const char* window_handle) {
+camera_hack::camera_hack(const char* window_handle)
+{
     window_name = FindWindowA(nullptr, window_handle);
     if(!window_name) printf("Error: Window not found");
     else printf("window found");
@@ -20,22 +21,27 @@ camera_hack::camera_hack(const char* window_handle) {
 
 }
 
-camera_hack::~camera_hack() {
+camera_hack::~camera_hack()
+{
     CloseHandle(window_name);
 }
 
-bool camera_hack::findProcessID() {
+bool camera_hack::findProcessID()
+{
     GetWindowThreadProcessId(window_name, &processID);
-    if(processID == 0) {
+    if(processID == 0)
+    {
         printf("\nFailed to get procID from HWND\n");
         return true;
     }
     printf("\nWindow ID \n >DEC %lu \n >HEX %lx \n\n", processID, processID);
 }
 
-int camera_hack::open_process() {
+int camera_hack::open_process()
+{
     l_handle = OpenProcess(PROCESS_ALL_ACCESS, true, processID);
-    if(l_handle == nullptr) {
+    if(l_handle == nullptr)
+    {
         GetLastError();
         printf("Error: failed to open process\n");
         return -1;
@@ -56,7 +62,8 @@ int camera_hack::get_modules() {
     printf("Names of modules: \n >");
     printf("\n");
     CHAR file_name[2048];
-    for (int i = 0; i < modulesCount; i++) {
+    for (int i = 0; i < modulesCount; i++)
+    {
         file_name[2048];
         GetModuleFileNameExA(l_handle, hModule[i], file_name, 2048);
         printf("[%s] ", file_name);
@@ -73,10 +80,12 @@ int camera_hack::get_modules() {
         }
     }
 
-    if (id_of_module_in_array == -1){
+    if (id_of_module_in_array == -1)
+    {
         printf("Failed to find EXE in modules\n"); return 1;
     }
-    if(GetModuleInformation(l_handle, hModule[id_of_module_in_array], &modInfo, sizeof(modInfo)) == 0){
+    if(GetModuleInformation(l_handle, hModule[id_of_module_in_array], &modInfo, sizeof(modInfo)) == 0)
+    {
         printf("Failed to get info about module\n");
         return 1;
     }
@@ -92,7 +101,8 @@ int camera_hack::get_modules() {
     return -1;
 }
 
-int camera_hack::get_memory() {
+int camera_hack::get_memory()
+{
     uintptr_t cameraAdr = (uintptr_t)(modInfo.lpBaseOfDll) + 0x252E190;
     float anglePtr;
     ReadProcessMemory(l_handle, (LPVOID)cameraAdr, &anglePtr, sizeof(float), nullptr);
@@ -103,7 +113,8 @@ int camera_hack::get_memory() {
     std::cout << "The new value is " << (float)newValue << "\n";
 }
 
-int camera_hack::hctpCamera() {
+int camera_hack::hctpCamera()
+{
     uintptr_t cameraAdr = (uintptr_t)(modInfo.lpBaseOfDll) + 0x0252E158;
     float newRotation = 0.1;
     WriteProcessMemory(l_handle, (LPVOID)cameraAdr, &newRotation, sizeof(newRotation), nullptr);

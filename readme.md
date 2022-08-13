@@ -1,4 +1,4 @@
-# WWE 2K22 Camera Mod
+# Camera Mod
 
 ## Table of Contents
 * [Description](#Description)

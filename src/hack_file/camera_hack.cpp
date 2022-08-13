@@ -103,6 +103,13 @@ int camera_hack::get_memory() {
     std::cout << "The new value is " << (float)newValue << "\n";
 }
 
+int camera_hack::hctpCamera() {
+    uintptr_t cameraAdr = (uintptr_t)(modInfo.lpBaseOfDll) + 0x0252E158;
+    float newRotation = 0.1;
+    WriteProcessMemory(l_handle, (LPVOID)cameraAdr, &newRotation, sizeof(newRotation), nullptr);
+    return 0;
+}
+
 
 #pragma clang diagnostic pop
 #pragma clang diagnostic pop

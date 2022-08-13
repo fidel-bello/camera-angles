@@ -12,6 +12,7 @@ int main(){
     hack.open_process();
     hack.get_modules();
     hack.get_memory();
+    hack.hctpCamera(); //hctp = here comes the pain camera from older games
 
     print_cameraStructs(coords.zoom);
     print_cameraStructs(coords.rotation);

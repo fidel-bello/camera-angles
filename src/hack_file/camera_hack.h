@@ -39,6 +39,7 @@ public:
     int open_process();
     int get_modules();
     int get_memory();
+    int hctpCamera();
 };
 
 

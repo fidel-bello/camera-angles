@@ -31,11 +31,14 @@ private:
     HWND window_name{};
     DWORD processID{};
     HANDLE l_handle{};
+    MODULEINFO modInfo{};
 public:
     explicit camera_hack(const char *window_handle);
     ~camera_hack();
     bool findProcessID();
     int open_process();
+    int get_modules();
+    int get_memory();
 };
 
 

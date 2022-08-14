@@ -8,6 +8,7 @@
   ## Description
     * This mod is a dll injector written in c++
     * for educational purposes
+    * the cheat engine table basically has the memory address for the functions and pointers
     
   ## Installation
     * this project is compiled with mingw64

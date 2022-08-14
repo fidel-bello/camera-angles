@@ -3,7 +3,6 @@
 ## Table of Contents
 * [Description](#Description)
 * [Installation](#Installation)
-* [license](#License)
 * [Contributing](#Contributing)
 
   ## Description
@@ -12,10 +11,7 @@
     
   ## Installation
     * this project is compiled with mingw64
-
-  ## License
-    * ![badge](https://img.shields.io/badge/license-MIT-blue)
-    * This application is covered by MIT
+    
 
   ## Contributing
     * delinx

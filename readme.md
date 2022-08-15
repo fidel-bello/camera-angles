@@ -3,19 +3,16 @@
 ## Table of Contents
 * [Description](#Description)
 * [Installation](#Installation)
-* [license](#License)
 * [Contributing](#Contributing)
 
   ## Description
     * This mod is a dll injector written in c++
     * for educational purposes
+    * the cheat engine table basically has the memory address for the functions and pointers
     
   ## Installation
     * this project is compiled with mingw64
-
-  ## License
-    * ![badge](https://img.shields.io/badge/license-MIT-blue)
-    * This application is covered by MIT
+    
 
   ## Contributing
     * delinx

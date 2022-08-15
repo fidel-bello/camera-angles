@@ -1,5 +1,8 @@
-#include <algorithm>
+//
+// Created by fidel on 8/11/2022.
+//
 
+#include <algorithm>
 
 #include "camera_hack.h"
 #include "../helpers/helpers.cpp"
@@ -9,11 +12,6 @@
 #pragma ide diagnostic ignored "ArrayIndexOutOfBounds"
 #pragma clang diagnostic ignored "-Wunused-value"
 #pragma ide diagnostic ignored "cppcoreguidelines-narrowing-conversions"
-//
-// Created by fidel on 8/11/2022.
-//
-
-
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wformat"
 
@@ -117,7 +115,6 @@ int camera_hack::get_memory()
     float newValue = 5;
     WriteProcessMemory(l_handle, (LPVOID)cameraAdr, &newValue, sizeof(newValue),nullptr);
     ReadProcessMemory(l_handle, (LPVOID)cameraAdr, &newValue, sizeof(newValue), nullptr);
-    std::cout << "The new value is " << (float)newValue << "\n";
 }
 
 int camera_hack::hctpCamera()
@@ -143,11 +140,23 @@ void camera_hack::nop_test() const
 
 void camera_hack::revert_test()
 {
+    int size = 4;
     unsigned int funcAddress = 0x36513B5;
     uintptr_t addressToReplace = (uintptr_t)(modInfo.lpBaseOfDll) + funcAddress;
-    std::array<unsigned char, 4> array = { DEFAULT_TEST };
-    WriteProcessMemory(l_handle, (LPVOID)addressToReplace, &array, 4, nullptr);
+    unsigned char array[] = { DEFAULT_TEST };
+    unsigned char* newArr = revert_address(array, size, l_handle, (LPVOID)addressToReplace);
+    if(!l_handle || !addressToReplace || newArr == 0)
+    {
+        printf("Error: not Successful");
+        printf("\n");
+    } else
+    {
+        printf("memory reverted");
+        printf("\n");
+    }
+    delete[] newArr;
 }
+
 
 
 #pragma clang diagnostic pop

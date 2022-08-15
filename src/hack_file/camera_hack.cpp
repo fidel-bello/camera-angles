@@ -124,14 +124,15 @@ int camera_hack::hctpCamera()
     return 0;
 }
 
-// trying to replace array of bytes with 0x90 defined in header but nothing;
-
-void camera_hack::replace() const {
-    int bytes = 4; // bytes of address
+/**
+ * test working
+ * */
+void camera_hack::nop_test() const
+{
+     BYTE Nop[] = { 0x90, 0x90, 0x90, 0x90 }; // address im testing has 4 bytes. so it contains 4 0x90
     unsigned int funcAddress = 0x36513B5; //address of the function im testing
     uintptr_t addressToReplace = (uintptr_t)(modInfo.lpBaseOfDll) + funcAddress; // base address + function address
-    no_op(addressToReplace, bytes); // defined in helpers/helpers.cpp
-    std::cout << std::hex << addressToReplace << "\n";
+    WriteProcessMemory(l_handle, (LPVOID)addressToReplace, &Nop, sizeof(Nop), nullptr);
 }
 
 

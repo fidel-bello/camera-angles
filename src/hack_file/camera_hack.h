@@ -42,7 +42,7 @@ public:
     int get_modules();
     int get_memory();
     int hctpCamera();
-    void replace() const;
+    void nop_test() const;
 };
 
 

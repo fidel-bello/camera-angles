@@ -9,8 +9,7 @@ int main(){
     hack.findProcessID();
     hack.open_process();
     hack.get_modules();
-    hack.replace();
-
+    hack.nop_test();
     //hack.get_memory();
     ///hack.hctpCamera(); //hctp = here comes the pain camera from older games
 

@@ -129,10 +129,12 @@ int camera_hack::hctpCamera()
  * */
 void camera_hack::nop_test() const
 {
-     BYTE Nop[] = { 0x90, 0x90, 0x90, 0x90 }; // address im testing has 4 bytes. so it contains 4 0x90
+    int size = 4; // size of array
     unsigned int funcAddress = 0x36513B5; //address of the function im testing
     uintptr_t addressToReplace = (uintptr_t)(modInfo.lpBaseOfDll) + funcAddress; // base address + function address
-    WriteProcessMemory(l_handle, (LPVOID)addressToReplace, &Nop, sizeof(Nop), nullptr);
+    char* newArray = (dynamic_nop(size, NOP));
+    WriteProcessMemory(l_handle, (LPVOID)addressToReplace, newArray, size, nullptr); //pushes new array to the process
+    delete [] newArray;
 }
 
 

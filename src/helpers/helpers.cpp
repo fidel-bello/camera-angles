@@ -21,11 +21,11 @@ char *dynamic_nop(int size, char val)
 }
 
 template <typename C, size_t N>
-void ReadArray(std::array<C , N>&array)
+void ReadArray(std::array<C , N>&array) // for testing purposes
 {
-    for(int i = 0; i < array.size(); i++){
-        std::cout << std::hex << array[i] << " ";
+    for(int i = 0; i < array.size(); i++)
+    {
+        printf(" ", array[i]);
     }
-    std::cout << "\n";
 }
 

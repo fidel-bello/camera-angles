@@ -1,3 +1,6 @@
+#include "camera_hack.h"
+#include "../helpers/helpers.cpp"
+
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "ArrayIndexOutOfBounds"
 #pragma clang diagnostic ignored "-Wunused-value"
@@ -5,7 +8,7 @@
 //
 // Created by fidel on 8/11/2022.
 //
-#include "camera_hack.h"
+
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wformat"
@@ -108,6 +111,16 @@ int camera_hack::hctpCamera() {
     float newRotation = 0.1;
     WriteProcessMemory(l_handle, (LPVOID)cameraAdr, &newRotation, sizeof(newRotation), nullptr);
     return 0;
+}
+
+// trying to replace array of bytes with 0x90 defined in header but nothing;
+
+void camera_hack::replace() const {
+    int bytes = 4; // bytes of address
+    unsigned int funcAddress = 0x36513B5; //address of the function im testing
+    uintptr_t addressToReplace = (uintptr_t)(modInfo.lpBaseOfDll) + funcAddress; // base address + function address
+    no_op(addressToReplace, bytes); // defined in helpers/helpers.cpp
+    std::cout << std::hex << addressToReplace << "\n";
 }
 
 

@@ -1,9 +1,7 @@
 /*
 * Created by fidel on 8/11/2022.
 **/
-
 #include "./hack_file/camera_hack.h"
-#include "./helpers/helper.cpp"
 
 int main(){
     COORDS coords;
@@ -11,11 +9,15 @@ int main(){
     hack.findProcessID();
     hack.open_process();
     hack.get_modules();
-    hack.get_memory();
-    hack.hctpCamera(); //hctp = here comes the pain camera from older games
+    while (true){
+        hack.replace();
+    }
 
-    print_cameraStructs(coords.zoom);
-    print_cameraStructs(coords.rotation);
-    print_cameraStructs(coords.heightRotation);
+    //hack.get_memory();
+    ///hack.hctpCamera(); //hctp = here comes the pain camera from older games
+
+    //print_cameraStructs(coords.zoom);
+   // print_cameraStructs(coords.rotation);
+   // print_cameraStructs(coords.heightRotation);
     return 0;
 }

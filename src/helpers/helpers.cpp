@@ -7,7 +7,6 @@
  * size == the size of the array, val = NOP or whatever value you want to pass in;
  * will be useful for future functions that have to be nop for the mod to work
  **/
-#include <array>
 #include <iostream>
 
 char *dynamic_nop(int size, char val)
@@ -20,12 +19,20 @@ char *dynamic_nop(int size, char val)
     return array;
 }
 
-template <typename C, size_t N>
-void ReadArray(std::array<C , N>&array) // for testing purposes
+//create empty arr, insert elements from input array, newarr = inputarr;
+unsigned char* revert_address(unsigned char array[], int size, HANDLE hProc, LPVOID baseAddress)
 {
-    for(int i = 0; i < array.size(); i++)
-    {
-        printf(" ", array[i]);
+    unsigned char* newArray = new unsigned char[size];
+    for(int i = 0; i < size; i++){
+        newArray[i] = array[i];
+        WriteProcessMemory(hProc, baseAddress, newArray, size, nullptr);
     }
+    return newArray;
 }
+
+
+
+
+
+
 

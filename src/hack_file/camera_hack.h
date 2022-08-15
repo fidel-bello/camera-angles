@@ -13,8 +13,6 @@
 #include <iostream>
 #include <vector>
 
-#define NOP 0x90
-
 /*
  * struct COORDS. these are the offsets for the camera values.
  * There are more in the memory address but need to figure out how their functions work
@@ -43,6 +41,7 @@ public:
     int get_memory();
     int hctpCamera();
     void nop_test() const;
+    void revert_test();
 };
 
 

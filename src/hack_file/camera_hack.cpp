@@ -1,5 +1,9 @@
+#include <algorithm>
+
+
 #include "camera_hack.h"
 #include "../helpers/helpers.cpp"
+#include "../constants/constants.h"
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "ArrayIndexOutOfBounds"
@@ -132,9 +136,17 @@ void camera_hack::nop_test() const
     int size = 4; // size of array
     unsigned int funcAddress = 0x36513B5; //address of the function im testing
     uintptr_t addressToReplace = (uintptr_t)(modInfo.lpBaseOfDll) + funcAddress; // base address + function address
-    char* newArray = (dynamic_nop(size, NOP));
-    WriteProcessMemory(l_handle, (LPVOID)addressToReplace, newArray, size, nullptr); //pushes new array to the process
+    char* newArray = dynamic_nop(size, NOP);
+    WriteProcessMemory(l_handle, (LPVOID)addressToReplace, newArray, size, nullptr); //pushes newArray to the process
     delete [] newArray;
+}
+
+void camera_hack::revert_test()
+{
+    unsigned int funcAddress = 0x36513B5;
+    uintptr_t addressToReplace = (uintptr_t)(modInfo.lpBaseOfDll) + funcAddress;
+    std::array<unsigned char, 4> array = { DEFAULT_TEST };
+    WriteProcessMemory(l_handle, (LPVOID)addressToReplace, &array, 4, nullptr);
 }
 
 

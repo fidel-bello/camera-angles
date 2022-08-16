@@ -9,6 +9,7 @@
 #include "../constants/constants.h"
 
 #pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wconstant-conversion"
 #pragma ide diagnostic ignored "ArrayIndexOutOfBounds"
 #pragma clang diagnostic ignored "-Wunused-value"
 #pragma ide diagnostic ignored "cppcoreguidelines-narrowing-conversions"
@@ -117,14 +118,6 @@ int camera_hack::get_memory()
     ReadProcessMemory(l_handle, (LPVOID)cameraAdr, &newValue, sizeof(newValue), nullptr);
 }
 
-int camera_hack::hctpCamera()
-{
-    uintptr_t cameraAdr = (uintptr_t)(modInfo.lpBaseOfDll) + 0x0252E158;
-    float newRotation = 0.1;
-    WriteProcessMemory(l_handle, (LPVOID)cameraAdr, &newRotation, sizeof(newRotation), nullptr);
-    return 0;
-}
-
 /**
  * test working
  * */
@@ -157,6 +150,42 @@ void camera_hack::revert_test()
     delete[] newArr;
 }
 
+//camera angles
+int camera_hack::hctpCamera()
+{
+    uintptr_t cameraAdr = (uintptr_t)(modInfo.lpBaseOfDll) + 0x0252E158;
+    float newRotation = 0.1;
+    WriteProcessMemory(l_handle, (LPVOID)cameraAdr, &newRotation, sizeof(newRotation), nullptr);
+    return 0;
+}
+
+int camera_hack::nose_bleeds() {
+
+    uintptr_t baseAddr= (uintptr_t)(modInfo.lpBaseOfDll);
+    float zoom_out_ring = 500;
+    float zoom_in_ring = 500;
+    float zoom_all = 20.5;
+    float y_tilt = -3;
+    float y_tilt_2 = 12;
+    float x_rotation_ = 1.200000048;
+
+
+    uintptr_t zoomInRing = baseAddr + Z_AXIS_IN_RING;
+    uintptr_t zoomOutRing = baseAddr + Z_AXIS_OUT_OF_RING;
+    uintptr_t zoomAll = baseAddr  + Z_AXIS_ALL;
+    uintptr_t yTiltIn = baseAddr + Y_AXIS_TILT_IN_RING;
+    uintptr_t yTiltOut = baseAddr + Y_AXIS_TILT_OUT_RING;
+    uintptr_t xRotate = baseAddr  + X_AXIS_ROTATION;
+
+
+    WriteProcessMemory(l_handle, (LPVOID)zoomAll, &zoom_all, sizeof(zoom_all), nullptr);
+    WriteProcessMemory(l_handle, (LPVOID)zoomOutRing, &zoom_out_ring, sizeof(float), nullptr);
+    WriteProcessMemory(l_handle, (LPVOID)zoomInRing, &zoom_in_ring, sizeof(float), nullptr);
+    WriteProcessMemory(l_handle, (LPVOID)yTiltIn, &y_tilt, sizeof(float), nullptr);
+    WriteProcessMemory(l_handle, (LPVOID)yTiltOut, &y_tilt_2, sizeof(float), nullptr);
+    WriteProcessMemory(l_handle, (LPVOID)xRotate, &x_rotation_, sizeof(float ), nullptr);
+    return 0;
+}
 
 
 #pragma clang diagnostic pop

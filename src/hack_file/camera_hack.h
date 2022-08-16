@@ -2,6 +2,8 @@
 // Created by fidel on 8/11/2022.
 //
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wconstant-conversion"
 #ifndef CAMERA_HACK_H
 #define CAMERA_HACK_H
 
@@ -12,6 +14,9 @@
 #include <ostream>
 #include <iostream>
 #include <vector>
+
+#include "../constants/wwe_19/wwe_19_constants.h"
+
 
 /*
  * struct COORDS. these are the offsets for the camera values.
@@ -39,10 +44,17 @@ public:
     int open_process();
     int get_modules();
     int get_memory();
-    int hctpCamera();
+
     void nop_test() const;
     void revert_test();
+
+    //camera angles for mod menu of choices
+    int hctpCamera();
+    int nose_bleeds();
+
 };
 
 
 #endif //CAMERA_HACK_H
+
+#pragma clang diagnostic pop

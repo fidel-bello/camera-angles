@@ -175,7 +175,6 @@ int camera_hack::nose_bleeds() {
     uintptr_t yTiltOut = baseAddr + Y_AXIS_TILT_OUT_RING;
     uintptr_t xRotate = baseAddr  + X_AXIS_ROTATION;
 
-
     WriteProcessMemory(l_handle, (LPVOID)zoomAll, &zoom_all, sizeof(zoom_all), nullptr);
     WriteProcessMemory(l_handle, (LPVOID)zoomOutRing, &zoom_out_ring, sizeof(float), nullptr);
     WriteProcessMemory(l_handle, (LPVOID)zoomInRing, &zoom_in_ring, sizeof(float), nullptr);

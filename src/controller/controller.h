@@ -12,6 +12,7 @@ struct Controller
     void camera_options();
     void choices();
     void controller_loop();
+    void stop();
     void menu();
 };
 

@@ -20,7 +20,7 @@ camera_hack::camera_hack(const char* window_handle)
 {
     window_name = FindWindowA(nullptr, window_handle);
     if(!window_name) printf("Error: Window not found");
-    else printf("window found");
+    //else printf("window found");
     processID = 0;
     l_handle = nullptr;
     modInfo;
@@ -40,7 +40,7 @@ bool camera_hack::findProcessID()
         printf("\nFailed to get procID from HWND\n");
         return true;
     }
-    printf("\nWindow ID \n >DEC %lu \n >HEX %lx \n\n", processID, processID);
+   // printf("\nWindow ID \n >DEC %lu \n >HEX %lx \n\n", processID, processID);
 }
 
 int camera_hack::open_process()
@@ -52,7 +52,7 @@ int camera_hack::open_process()
         printf("Error: failed to open process\n");
         return -1;
     }
-    printf("Process handle \n >DEC %lu \n >HEX %lx \n\n", l_handle, l_handle);
+    //printf("Process handle \n >DEC %lu \n >HEX %lx \n\n", l_handle, l_handle);
 }
 
 int camera_hack::get_modules() {
@@ -63,16 +63,16 @@ int camera_hack::get_modules() {
     // Total number of modules we got it calculated by
     // Number of bytes returned by EnumProcessModules / size of one HMODULE element
     int modulesCount = lpcbNeeded / sizeof(HMODULE);
-    printf("Number of modules found \n > %d\n\n", modulesCount);
+    //printf("Number of modules found \n > %d\n\n", modulesCount);
     // printing name of all modules, no use for hack, just for debug
-    printf("Names of modules: \n >");
-    printf("\n");
+    //printf("Names of modules: \n >");
+    //printf("\n");
     CHAR file_name[2048];
     for (int i = 0; i < modulesCount; i++)
     {
         file_name[2048];
         GetModuleFileNameExA(l_handle, hModule[i], file_name, 2048);
-        printf("[%s] ", file_name);
+        //printf("[%s] ", file_name);
     }
     int id_of_module_in_array = -1;
     for (int i = 0; i < modulesCount; i++)
@@ -81,21 +81,22 @@ int camera_hack::get_modules() {
         GetModuleFileNameExA(l_handle, hModule[i], file_name, 2048);
         if (std::string(file_name).find("WWE2K19_x64.exe") != std::string::npos)
         {
-            printf("\n\nFound EXE \n >%s\n >%x\n",file_name, hModule[i]);
+            //printf("\n\nFound EXE \n >%s\n >%x\n",file_name, hModule[i]);
             id_of_module_in_array = i;
         }
     }
 
     if (id_of_module_in_array == -1)
     {
-        printf("Failed to find EXE in modules\n"); return 1;
+        //printf("Failed to find EXE in modules\n");
+        return 1;
     }
     if(GetModuleInformation(l_handle, hModule[id_of_module_in_array], &modInfo, sizeof(modInfo)) == 0)
     {
-        printf("Failed to get info about module\n");
+        //printf("Failed to get info about module\n");
         return 1;
     }
-
+/*
     printf("\nInformation about module\n");
     printf(" >EntryPoint\n");
     printf(" >> %x\n", modInfo.EntryPoint);
@@ -103,6 +104,7 @@ int camera_hack::get_modules() {
     printf(" >> %x\n", modInfo.lpBaseOfDll);
     printf(" >SizeOfImage\n");
     printf(" >> %d\n", modInfo.SizeOfImage);
+*/
 
     return -1;
 }
@@ -141,10 +143,6 @@ void camera_hack::revert_test()
     if(!l_handle || !addressToReplace || newArr == 0)
     {
         printf("Error: not Successful");
-        printf("\n");
-    } else
-    {
-        printf("memory reverted");
         printf("\n");
     }
     delete[] newArr;

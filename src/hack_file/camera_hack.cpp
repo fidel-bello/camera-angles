@@ -6,8 +6,8 @@
 
 #include <string>
 #include "camera_hack.h"
-#include "../helpers/helpers.cpp"
-#include "../constants/constants.h"
+#include "./helpers/helpers.cpp"
+#include "./constants/constants.h"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wconstant-conversion"
@@ -24,12 +24,27 @@ camera_hack::camera_hack(const char* window_handle)
     //else printf("window found");
     processID = 0;
     baseAddr = (uintptr_t) (modInfo.lpBaseOfDll);
-    zoomInRing = baseAddr + Z_AXIS_IN_RING;
-    zoomOutRing = baseAddr + Z_AXIS_OUT_OF_RING;
-    zoomAll = baseAddr  + Z_AXIS_ALL;
-    yTiltIn = baseAddr + Y_AXIS_TILT_IN_RING;
-    yTiltOut = baseAddr + Y_AXIS_TILT_OUT_RING;
-    xRotate = baseAddr  + X_AXIS_ROTATION;
+
+    zoomInRing = baseAddr + zoom_in_ring;
+    zoomOutRing = baseAddr + zoom_out_ring;
+    zoomAll = baseAddr  + zoom_all;
+    yTiltIn = baseAddr + y_tilt_in;
+    yTiltOut = baseAddr + y_tilt_out;
+    xRotate = baseAddr  + x_rotate;
+
+    zoom_in_ring = 0X252E1A0;
+    zoom_out_ring = 0X252E1AC;
+    zoom_all = 0x252E1E0;
+    y_tilt_in = 0X252E1E4;
+    y_tilt_out = 0X252E1E8;
+    x_rotate = 0x252E190;
+
+    default_zoom_in_ring = 220;
+    default_zoom_out_ring = 600;
+    default_zoom_all = 12.5;
+    default_y_tilt_in = 10;
+    default_y_tilt_out = 6.5;
+    default_x_rotate = 1.570796371;
 }
 
 camera_hack::~camera_hack()
@@ -174,6 +189,17 @@ int camera_hack::nose_bleeds() {
     }
 
     return success;
+}
+
+int camera_hack::default_cam() {
+    camera_struct angle = { default_zoom_out_ring, default_zoom_in_ring, default_zoom_all, default_y_tilt_in, default_y_tilt_in, default_x_rotate };
+    int success = set_angle(angle);
+    if(success == 0)
+    {
+        return -1;
+    }
+    return success;
+
 }
 
 int camera_hack::set_angle(const camera_struct &angle) {

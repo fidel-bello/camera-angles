@@ -24,17 +24,13 @@
  * these are passed in a function that automatically defaults them back to their original values
  * to make the hack work, I had to disable the functions with an assembler nop
  * */
-
-struct COORDS {
+/*
+struct COORDS { for future use WWE 2K22
     std::vector<unsigned int>heightRotation = { 0x18, 0x0, 0x28, 0x18, 0x164 }; //address = baseExe + 0x036ED368
     std::vector<unsigned int>zoom = { 0x20, 0x28, 0x28, 0x18, 0x178 }; // address = baseExe + 0x036ED358
     std::vector<unsigned int>rotation = { 0x20, 0x38, 0x30, 0x18, 0x158 }; //address = baseExe + 0x036ED358
 };
-
-struct address
-{
-
-};
+*/
 
 class camera_hack {
 private:
@@ -60,6 +56,20 @@ private:
     uintptr_t yTiltOut;
     uintptr_t xRotate;
 
+    uint16_t zoom_in_ring;
+    uint16_t zoom_out_ring;
+    uint16_t zoom_all;
+    uint16_t y_tilt_in;
+    uint16_t y_tilt_out;
+    uint16_t x_rotate;
+
+    float default_zoom_out_ring;
+    float default_zoom_in_ring;
+    float default_zoom_all;
+    float default_y_tilt_in;
+    float default_y_tilt_out;
+    float default_x_rotate;
+
     int set_angle(const camera_struct &angle);
 public:
     explicit camera_hack(const char *window_handle);
@@ -75,7 +85,7 @@ public:
     //camera angles for mod menu of choices
     int hctpCamera();
     int nose_bleeds();
-
+    int default_cam();
 };
 
 

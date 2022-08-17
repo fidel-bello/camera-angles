@@ -31,12 +31,36 @@ struct COORDS {
     std::vector<unsigned int>rotation = { 0x20, 0x38, 0x30, 0x18, 0x158 }; //address = baseExe + 0x036ED358
 };
 
+struct address
+{
+
+};
+
 class camera_hack {
 private:
+    struct camera_struct
+    {
+        float zoom_out_ring;
+        float zoom_in_ring;
+        float zoom_all;
+        float y_tilt;
+        float y_tilt_2;
+        float x_rotation;
+    };
+
     HWND window_name{};
     DWORD processID{};
     HANDLE l_handle{};
     MODULEINFO modInfo{};
+    uintptr_t baseAddr;
+    uintptr_t zoomInRing;
+    uintptr_t zoomOutRing;
+    uintptr_t zoomAll;
+    uintptr_t yTiltIn;
+    uintptr_t yTiltOut;
+    uintptr_t xRotate;
+
+    int set_angle(const camera_struct &angle);
 public:
     explicit camera_hack(const char *window_handle);
     ~camera_hack();

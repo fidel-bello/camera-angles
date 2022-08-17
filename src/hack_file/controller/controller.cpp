@@ -2,7 +2,7 @@
 // Created by fidel on 8/15/2022.
 //
 #include "./controller.h"
-#include "../hack_file/camera_hack.h"
+#include "../camera_hack.h"
 
 void Controller::menu()
 {

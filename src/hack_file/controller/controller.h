@@ -15,6 +15,7 @@ struct Controller
     void stop();
     void menu();
 };
+
 void Controller::menu()
 {
     printf("=======================================================");

@@ -4,7 +4,7 @@
 #ifndef NEW_CAMERA_HACK_CONTROLLER_H
 #define NEW_CAMERA_HACK_CONTROLLER_H
 
-#include "../hack_file/camera_hack.h"
+#include "../camera_hack.h"
 
 struct Controller
 {

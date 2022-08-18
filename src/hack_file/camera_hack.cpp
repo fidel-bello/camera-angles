@@ -4,9 +4,10 @@
 
 #include <algorithm>
 
+#include <string>
 #include "camera_hack.h"
-#include "../helpers/helpers.cpp"
-#include "../constants/constants.h"
+#include "./helpers/helpers.cpp"
+#include "./constants/constants.h"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wconstant-conversion"
@@ -24,7 +25,6 @@ camera_hack::camera_hack(const char* window_handle)
     processID = 0;
     l_handle = nullptr;
     modInfo;
-
 }
 
 camera_hack::~camera_hack()
@@ -40,6 +40,8 @@ bool camera_hack::findProcessID()
         printf("\nFailed to get procID from HWND\n");
         return true;
     }
+
+   return processID;
    // printf("\nWindow ID \n >DEC %lu \n >HEX %lx \n\n", processID, processID);
 }
 
@@ -159,30 +161,42 @@ int camera_hack::hctpCamera()
 
 int camera_hack::nose_bleeds() {
 
-    uintptr_t baseAddr= (uintptr_t)(modInfo.lpBaseOfDll);
-    float zoom_out_ring = 500;
-    float zoom_in_ring = 500;
-    float zoom_all = 20.5;
-    float y_tilt = -3;
-    float y_tilt_2 = 12;
-    float x_rotation_ = 1.200000048;
+    camera_struct angle = { 500, 500, 20.5, -3, 12, 1.200000048 };
+    return set_angle(angle);
+}
+
+int camera_hack::default_cam()
+{
+    camera_struct angle = { 1.75, 1.57, 25, 10, 3, 6.5, 12.5, 300, 290 };
+
+    set_angle(angle);
+
+}
 
 
-    uintptr_t zoomInRing = baseAddr + Z_AXIS_IN_RING;
-    uintptr_t zoomOutRing = baseAddr + Z_AXIS_OUT_OF_RING;
-    uintptr_t zoomAll = baseAddr  + Z_AXIS_ALL;
-    uintptr_t yTiltIn = baseAddr + Y_AXIS_TILT_IN_RING;
-    uintptr_t yTiltOut = baseAddr + Y_AXIS_TILT_OUT_RING;
-    uintptr_t xRotate = baseAddr  + X_AXIS_ROTATION;
+int camera_hack::set_angle(const camera_struct &angle)
+{
+    uintptr_t xAxis = (uintptr_t)(modInfo.lpBaseOfDll) + 0x252E190;
+    uintptr_t xRotate = (uintptr_t)(modInfo.lpBaseOfDll) + 0x252E158;
+    uintptr_t yAll = (uintptr_t)(modInfo.lpBaseOfDll) + 0x14252E1C4;
+    uintptr_t yOut = (uintptr_t)(modInfo.lpBaseOfDll) + 0x252E1C8;
+    uintptr_t yTiltIn = (uintptr_t)(modInfo.lpBaseOfDll) + 0x252E1E4;
+    uintptr_t yTiltOut = (uintptr_t)(modInfo.lpBaseOfDll) + 0x252E1E8;
+    uintptr_t zAll = (uintptr_t)(modInfo.lpBaseOfDll) + 0x252E1E0;
+    uintptr_t zIn = (uintptr_t)(modInfo.lpBaseOfDll) + 0x252E1A0;
+    uintptr_t zOut = (uintptr_t)(modInfo.lpBaseOfDll) + 0x252E1AC;
 
 
-    WriteProcessMemory(l_handle, (LPVOID)zoomAll, &zoom_all, sizeof(zoom_all), nullptr);
-    WriteProcessMemory(l_handle, (LPVOID)zoomOutRing, &zoom_out_ring, sizeof(float), nullptr);
-    WriteProcessMemory(l_handle, (LPVOID)zoomInRing, &zoom_in_ring, sizeof(float), nullptr);
-    WriteProcessMemory(l_handle, (LPVOID)yTiltIn, &y_tilt, sizeof(float), nullptr);
-    WriteProcessMemory(l_handle, (LPVOID)yTiltOut, &y_tilt_2, sizeof(float), nullptr);
-    WriteProcessMemory(l_handle, (LPVOID)xRotate, &x_rotation_, sizeof(float ), nullptr);
-    return 0;
+
+    WriteProcessMemory(l_handle, (LPVOID)xAxis, &angle.x_axis, sizeof(float), nullptr);
+    WriteProcessMemory(l_handle, (LPVOID)xRotate, &angle.x_rotation, sizeof(float), nullptr);
+    WriteProcessMemory(l_handle, (LPVOID)yAll, &angle.y_all, sizeof(float), nullptr);
+    WriteProcessMemory(l_handle, (LPVOID)yOut, &angle.y_out_ring, sizeof(float), nullptr);
+    WriteProcessMemory(l_handle, (LPVOID)yTiltIn, &angle.y_tilt_in_ring, sizeof(float), nullptr);
+    WriteProcessMemory(l_handle, (LPVOID)yTiltOut, &angle.y_tilt_out_ring, sizeof(float), nullptr);
+    WriteProcessMemory(l_handle, (LPVOID)zAll, &angle.z_all, sizeof(float), nullptr);
+    WriteProcessMemory(l_handle, (LPVOID)zIn, &angle.z_in_ring, sizeof(float), nullptr);
+    WriteProcessMemory(l_handle, (LPVOID)zOut, &angle.z_out_ring, sizeof(float), nullptr);
 }
 
 

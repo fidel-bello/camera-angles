@@ -153,24 +153,20 @@ void camera_hack::revert_test()
 //camera angles
 int camera_hack::hctpCamera()
 {
-    uintptr_t cameraAdr = (uintptr_t)(modInfo.lpBaseOfDll) + 0x0252E158;
-    float newRotation = 0.1;
-    WriteProcessMemory(l_handle, (LPVOID)cameraAdr, &newRotation, sizeof(newRotation), nullptr);
-    return 0;
+   camera_struct angle = { 1.75, 0.2 };
+   return set_angle(angle);
 }
 
 int camera_hack::nose_bleeds() {
 
-    camera_struct angle = { 500, 500, 20.5, -3, 12, 1.200000048 };
+    camera_struct angle = { 1.75, 1.200000048, 25, 10, -3, 12, 12.5, 500, 500 };
     return set_angle(angle);
 }
 
 int camera_hack::default_cam()
 {
     camera_struct angle = { 1.75, 1.57, 25, 10, 3, 6.5, 12.5, 300, 290 };
-
-    set_angle(angle);
-
+    return set_angle(angle);
 }
 
 

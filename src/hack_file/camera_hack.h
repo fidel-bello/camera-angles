@@ -15,7 +15,7 @@
 #include <iostream>
 #include <vector>
 
-#include "../constants/wwe_19/wwe_19_constants.h"
+#include "constants/wwe_19/wwe_19_constants.h"
 
 
 /*
@@ -36,39 +36,22 @@ class camera_hack {
 private:
     struct camera_struct
     {
-        float zoom_out_ring;
-        float zoom_in_ring;
-        float zoom_all;
-        float y_tilt;
-        float y_tilt_2;
-        float x_rotation;
+        float x_axis;//default is 1.75 -> 0x252E190
+        float x_rotation;//default is 1.57 -> 0x252E158
+        float y_all;//default 25 -> 0x14252E1C4
+        float y_out_ring;//default 10 -> 0x252E1C8
+        float y_tilt_in_ring;//default 3 -> 0x252E1E4
+        float y_tilt_out_ring;//default 6.5 -> 0x252E1E8
+        float z_all;//default 12.5 -> 0x252E1E0
+        float z_in_ring;//default 300 -> 0x252E1A0
+        float z_out_ring;//default 290 -> 0x252E1AC
     };
+
 
     HWND window_name{};
     DWORD processID{};
     HANDLE l_handle{};
     MODULEINFO modInfo{};
-    uintptr_t baseAddr;
-    uintptr_t zoomInRing;
-    uintptr_t zoomOutRing;
-    uintptr_t zoomAll;
-    uintptr_t yTiltIn;
-    uintptr_t yTiltOut;
-    uintptr_t xRotate;
-
-    uint16_t zoom_in_ring;
-    uint16_t zoom_out_ring;
-    uint16_t zoom_all;
-    uint16_t y_tilt_in;
-    uint16_t y_tilt_out;
-    uint16_t x_rotate;
-
-    float default_zoom_out_ring;
-    float default_zoom_in_ring;
-    float default_zoom_all;
-    float default_y_tilt_in;
-    float default_y_tilt_out;
-    float default_x_rotate;
 
     int set_angle(const camera_struct &angle);
 public:

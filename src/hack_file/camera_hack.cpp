@@ -1,13 +1,8 @@
 //
 // Created by fidel on 8/11/2022.
 //
-
-#include <algorithm>
-
-#include <string>
 #include "camera_hack.h"
 #include "./helpers/helpers.cpp"
-#include "./constants/constants.h"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wconstant-conversion"
@@ -16,6 +11,8 @@
 #pragma ide diagnostic ignored "cppcoreguidelines-narrowing-conversions"
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wformat"
+
+
 
 camera_hack::camera_hack(const char* window_handle)
 {
@@ -42,7 +39,6 @@ bool camera_hack::findProcessID()
     }
 
    return processID;
-   // printf("\nWindow ID \n >DEC %lu \n >HEX %lx \n\n", processID, processID);
 }
 
 int camera_hack::open_process()
@@ -54,7 +50,7 @@ int camera_hack::open_process()
         printf("Error: failed to open process\n");
         return -1;
     }
-    //printf("Process handle \n >DEC %lu \n >HEX %lx \n\n", l_handle, l_handle);
+    return true;
 }
 
 int camera_hack::get_modules() {
@@ -65,16 +61,11 @@ int camera_hack::get_modules() {
     // Total number of modules we got it calculated by
     // Number of bytes returned by EnumProcessModules / size of one HMODULE element
     int modulesCount = lpcbNeeded / sizeof(HMODULE);
-    //printf("Number of modules found \n > %d\n\n", modulesCount);
-    // printing name of all modules, no use for hack, just for debug
-    //printf("Names of modules: \n >");
-    //printf("\n");
     CHAR file_name[2048];
     for (int i = 0; i < modulesCount; i++)
     {
         file_name[2048];
         GetModuleFileNameExA(l_handle, hModule[i], file_name, 2048);
-        //printf("[%s] ", file_name);
     }
     int id_of_module_in_array = -1;
     for (int i = 0; i < modulesCount; i++)
@@ -83,34 +74,25 @@ int camera_hack::get_modules() {
         GetModuleFileNameExA(l_handle, hModule[i], file_name, 2048);
         if (std::string(file_name).find("WWE2K19_x64.exe") != std::string::npos)
         {
-            //printf("\n\nFound EXE \n >%s\n >%x\n",file_name, hModule[i]);
             id_of_module_in_array = i;
         }
     }
 
     if (id_of_module_in_array == -1)
     {
-        //printf("Failed to find EXE in modules\n");
-        return 1;
+        printf("Failed to find EXE in modules\n");
     }
     if(GetModuleInformation(l_handle, hModule[id_of_module_in_array], &modInfo, sizeof(modInfo)) == 0)
     {
-        //printf("Failed to get info about module\n");
-        return 1;
+        printf("Failed to get info about module\n");
     }
-/*
-    printf("\nInformation about module\n");
-    printf(" >EntryPoint\n");
-    printf(" >> %x\n", modInfo.EntryPoint);
-    printf(" >BaseOfDll\n");
-    printf(" >> %x\n", modInfo.lpBaseOfDll);
-    printf(" >SizeOfImage\n");
-    printf(" >> %d\n", modInfo.SizeOfImage);
-*/
 
     return -1;
 }
-
+/*
+ * test
+ */
+/*
 int camera_hack::get_memory()
 {
     uintptr_t cameraAdr = (uintptr_t)(modInfo.lpBaseOfDll) + 0x252E190;
@@ -121,10 +103,13 @@ int camera_hack::get_memory()
     WriteProcessMemory(l_handle, (LPVOID)cameraAdr, &newValue, sizeof(newValue),nullptr);
     ReadProcessMemory(l_handle, (LPVOID)cameraAdr, &newValue, sizeof(newValue), nullptr);
 }
+ */
 
 /**
  * test working
+ * just a test
  * */
+ /*
 void camera_hack::nop_test() const
 {
     int size = 4; // size of array
@@ -134,7 +119,9 @@ void camera_hack::nop_test() const
     WriteProcessMemory(l_handle, (LPVOID)addressToReplace, newArray, size, nullptr); //pushes newArray to the process
     delete [] newArray;
 }
-
+  */
+/*
+//for later use
 void camera_hack::revert_test()
 {
     int size = 4;
@@ -149,28 +136,25 @@ void camera_hack::revert_test()
     }
     delete[] newArr;
 }
+*/
 
 //camera angles
 int camera_hack::hctpCamera()
 {
-    uintptr_t cameraAdr = (uintptr_t)(modInfo.lpBaseOfDll) + 0x0252E158;
-    float newRotation = 0.1;
-    WriteProcessMemory(l_handle, (LPVOID)cameraAdr, &newRotation, sizeof(newRotation), nullptr);
-    return 0;
+   camera_struct angle = { 1.75, 0.019, 80, 8, 9, 20, 450, 500, 12.5 };
+   return set_angle(angle);
 }
 
-int camera_hack::nose_bleeds() {
-
-    camera_struct angle = { 500, 500, 20.5, -3, 12, 1.200000048 };
+int camera_hack::nose_bleeds()
+{
+    camera_struct angle = { 1.75, 1.200000048, 25, 10, -3, 12, 12.5, 500, 500 };
     return set_angle(angle);
 }
 
 int camera_hack::default_cam()
 {
     camera_struct angle = { 1.75, 1.57, 25, 10, 3, 6.5, 12.5, 300, 290 };
-
-    set_angle(angle);
-
+    return set_angle(angle);
 }
 
 
@@ -185,8 +169,6 @@ int camera_hack::set_angle(const camera_struct &angle)
     uintptr_t zAll = (uintptr_t)(modInfo.lpBaseOfDll) + 0x252E1E0;
     uintptr_t zIn = (uintptr_t)(modInfo.lpBaseOfDll) + 0x252E1A0;
     uintptr_t zOut = (uintptr_t)(modInfo.lpBaseOfDll) + 0x252E1AC;
-
-
 
     WriteProcessMemory(l_handle, (LPVOID)xAxis, &angle.x_axis, sizeof(float), nullptr);
     WriteProcessMemory(l_handle, (LPVOID)xRotate, &angle.x_rotation, sizeof(float), nullptr);

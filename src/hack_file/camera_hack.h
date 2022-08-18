@@ -4,6 +4,7 @@
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wconstant-conversion"
+
 #ifndef CAMERA_HACK_H
 #define CAMERA_HACK_H
 
@@ -15,7 +16,6 @@
 #include <iostream>
 #include <vector>
 
-#include "constants/wwe_19/wwe_19_constants.h"
 
 
 /*

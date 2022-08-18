@@ -1,9 +1,5 @@
 # Project exclude paths
 /cmake-build-debug/
 
-# bat builds
-run.bat
-build.bat
-
 # CMake file
 CMakeLists.txt

@@ -141,7 +141,7 @@ void camera_hack::revert_test()
 //camera angles
 int camera_hack::hctpCamera()
 {
-   camera_struct angle = { 1.75, 0.019, 80, 8, 9, 20, 450, 500, 12.5 };
+   camera_struct angle = { 1.75, 0.019, 80, 8, 9, 20, 12.5, 450, 500 };
    return set_angle(angle);
 }
 

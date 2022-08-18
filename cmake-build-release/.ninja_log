@@ -1,0 +1,4 @@
+# ninja log v5
+0	1281	6825542431554908	CMakeFiles/new_camera_hack.dir/src/main.cpp.obj	f746895eda31bad4
+4	1326	6825542432010035	CMakeFiles/new_camera_hack.dir/src/hack_file/camera_hack.cpp.obj	82c88264d41d64c0
+1326	1414	6825542432853016	new_camera_hack.exe	6fab6f6f55b076a5

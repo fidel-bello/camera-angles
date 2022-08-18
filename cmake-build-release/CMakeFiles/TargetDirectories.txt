@@ -1,0 +1,3 @@
+C:/Users/fidel/Desktop/github_projects/new_camera_hack/cmake-build-release/CMakeFiles/new_camera_hack.dir
+C:/Users/fidel/Desktop/github_projects/new_camera_hack/cmake-build-release/CMakeFiles/edit_cache.dir
+C:/Users/fidel/Desktop/github_projects/new_camera_hack/cmake-build-release/CMakeFiles/rebuild_cache.dir

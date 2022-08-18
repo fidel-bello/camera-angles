@@ -179,6 +179,7 @@ int camera_hack::set_angle(const camera_struct &angle)
     WriteProcessMemory(l_handle, (LPVOID)zAll, &angle.z_all, sizeof(float), nullptr);
     WriteProcessMemory(l_handle, (LPVOID)zIn, &angle.z_in_ring, sizeof(float), nullptr);
     WriteProcessMemory(l_handle, (LPVOID)zOut, &angle.z_out_ring, sizeof(float), nullptr);
+    return 0;
 }
 
 

@@ -10,6 +10,8 @@
     * This mod is a dll injector written in c++
     * for educational purposes
     * the cheat engine table basically has the memory address for the functions and pointers
+    * The game does not have a feature for the user to make their own camera angles while playing the game. How can this be implemented?
+    With the help of windows api, I have been able to implement this via terminal commands. The user can picka variety of different camera angles hard coded in the program.
     
   ## Installation
     * this project is compiled with mingw64

@@ -15,6 +15,7 @@
     
   ## Installation
     * this project is compiled with mingw64
+    * Clion or Visual Studio
     
 
   ## Contributing

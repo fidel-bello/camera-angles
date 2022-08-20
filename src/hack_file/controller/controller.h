@@ -1,6 +1,9 @@
 //
 // Created by fidel on 8/15/2022.
 //
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "EndlessLoop"
+
 #ifndef NEW_CAMERA_HACK_CONTROLLER_H
 #define NEW_CAMERA_HACK_CONTROLLER_H
 
@@ -11,6 +14,7 @@ struct Controller
     int choice;
     void camera_options();
     void choices();
+
     void controller_loop();
     void stop();
     void menu();
@@ -18,14 +22,8 @@ struct Controller
 
 void Controller::menu()
 {
-    printf("=======================================================");
     printf("\n");
-    printf("                     MENU              ");
-    printf("\n");
-    printf("=======================================================");
-    printf("\n");
-    printf("\n");
-    printf("========================================================");
+    printf("MENU              ");
     printf("\n");
 }
 
@@ -34,9 +32,9 @@ void Controller::camera_options()
 {
     printf("========================================================");
     printf("\n");
-    printf("1. HCTP camera angle");
+    printf("1. HCTP Camera");
     printf("\n");
-    printf("2. Nose Bleeds camera angle");
+    printf("2. Nose Bleeds Camera");
     printf("\n");
     printf("3. Default Camera");
     printf("\n\n");
@@ -63,22 +61,20 @@ void Controller::controller_loop()
     do
     {
         choices();
-    } while (choice == 1 || choice == 2 || choice == 3);
+    } while (true);
 }
 
 void Controller::choices() {
-    printf("1. Camera Options");
+    printf("1. Camera Options -> press 1 for camera options");
     printf("\n");
-    printf("2. Free Camera"); //not done
-    printf("\n");
+    printf("2. More Options Coming Soon");
+    //printf("\n");
 
     std::cin >> choice;
     if(choice == 1) {
         do {
             camera_options();
-        } while (choice == 1 || choice == 2);
-    } else {
-        stop();
+        } while (choice == 1);
     }
 }
 
@@ -88,3 +84,5 @@ void Controller::stop() {
 
 
 #endif //NEW_CAMERA_HACK_CONTROLLER_H
+
+#pragma clang diagnostic pop

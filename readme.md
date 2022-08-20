@@ -20,11 +20,12 @@
 
   ## Contributing
     * delinx
-    
+
   ## Usage
+   * https://user-images.githubusercontent.com/73322116/185727920-a7ef1e5f-5536-4c11-818d-db0ed5ec20f4.mp4
     
 
-https://user-images.githubusercontent.com/73322116/184941141-e95cce58-6773-4485-ba2b-2fbf8a82416d.mp4
+
 
 
 

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="42">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"x axis"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>WWE2K19_x64.exe+252E190</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>28</ID>
+      <Description>"x-rotation"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>14252E158</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>21</ID>
+      <Description>"y-axis(all)"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>14252E1C4</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>22</ID>
+      <Description>"y-axis(out of ring only)"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>14252E1C8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>26</ID>
+      <Description>"y-tilt(in ring)"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>14252E1E4</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>27</ID>
+      <Description>"y-tilt(out of ring)"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>14252E1E8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>25</ID>
+      <Description>"z-axis(zoom all)"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>14252E1E0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>12</ID>
+      <Description>"z-axis(zoom in ring)"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>14252E1A0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>15</ID>
+      <Description>"z-axis(zoom out of ring)"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>14252E1AC</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

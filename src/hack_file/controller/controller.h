@@ -35,7 +35,9 @@ void Controller::camera_options() {
     printf("\n");
     printf("2. Nose Bleeds Camera");
     printf("\n");
-    printf("3. Default Camera");
+    printf("3. Ring Side Camera");
+    printf("\n");
+    printf("4. Default Camera");
     printf("\n\n");
     camera_hack hack("WWE 2K19");
     hack.findProcessID();
@@ -47,7 +49,9 @@ void Controller::camera_options() {
         hack.hctpCamera();
     } else if (choice == 2) {
         hack.nose_bleeds();
-    } else if (choice == 3) {
+    } else if (choice == 3){
+        hack.ring_side();
+    }else if (choice == 4) {
         hack.default_cam();
     }
 }

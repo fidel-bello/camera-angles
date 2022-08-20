@@ -60,10 +60,12 @@ public:
     int get_modules();
     //void nop_test() const;
     //void revert_test();
-    //camera angles for mod menu of choices
+//camera angles for mod menu of choices #2k19
     int hctpCamera();
     int nose_bleeds();
+    int ring_side();
     int default_cam();
+
 };
 
 

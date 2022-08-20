@@ -68,7 +68,7 @@ void Controller::choices() {
     printf("1. Camera Options -> press 1 for camera options");
     printf("\n");
     printf("2. More Options Coming Soon");
-    //printf("\n");
+    printf("\n");
 
     std::cin >> choice;
     if(choice == 1) {

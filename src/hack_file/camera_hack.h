@@ -4,6 +4,7 @@
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wconstant-conversion"
+
 #ifndef CAMERA_HACK_H
 #define CAMERA_HACK_H
 
@@ -15,7 +16,6 @@
 #include <iostream>
 #include <vector>
 
-#include "constants/wwe_19/wwe_19_constants.h"
 
 
 /*
@@ -31,7 +31,6 @@ struct COORDS { for future use WWE 2K22
     std::vector<unsigned int>rotation = { 0x20, 0x38, 0x30, 0x18, 0x158 }; //address = baseExe + 0x036ED358
 };
 */
-
 class camera_hack {
 private:
     struct camera_struct
@@ -47,7 +46,6 @@ private:
         float z_out_ring;//default 290 -> 0x252E1AC
     };
 
-
     HWND window_name{};
     DWORD processID{};
     HANDLE l_handle{};
@@ -62,7 +60,6 @@ public:
     int get_modules();
     //void nop_test() const;
     //void revert_test();
-
     //camera angles for mod menu of choices
     int hctpCamera();
     int nose_bleeds();

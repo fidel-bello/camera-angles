@@ -1,10 +1,6 @@
 //
 // Created by fidel on 8/11/2022.
 //
-
-#include <algorithm>
-
-#include <string>
 #include "camera_hack.h"
 #include "./helpers/helpers.cpp"
 
@@ -15,6 +11,8 @@
 #pragma ide diagnostic ignored "cppcoreguidelines-narrowing-conversions"
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wformat"
+
+
 
 camera_hack::camera_hack(const char* window_handle)
 {
@@ -94,49 +92,45 @@ int camera_hack::get_modules() {
 //camera angles
 int camera_hack::hctpCamera()
 {
-    uintptr_t cameraAdr = (uintptr_t)(modInfo.lpBaseOfDll) + 0x0252E158;
-    float newRotation = 0.1;
-    WriteProcessMemory(l_handle, (LPVOID)cameraAdr, &newRotation, sizeof(newRotation), nullptr);
-    return 0;
+   camera_struct angle = { 1.75, 0.019, 80, 8, 9, 20, 12.5, 450, 500 };
+   return set_angle(angle);
 }
 
-int camera_hack::nose_bleeds() {
-
-    camera_struct angle = { 500, 500, 20.5, -3, 12, 1.200000048 };
+int camera_hack::nose_bleeds()
+{
+    camera_struct angle = { 1.75, 1.200000048, 25, 10, -3, 12, 12.5, 500, 500 };
     return set_angle(angle);
 }
 
 int camera_hack::default_cam()
 {
     camera_struct angle = { 1.75, 1.57, 25, 10, 3, 6.5, 12.5, 300, 290 };
-
     return set_angle(angle);
-
 }
 
-int camera_hack::set_angle(const camera_struct &angle)
-{
-    uintptr_t xAxis = (uintptr_t)(modInfo.lpBaseOfDll) + 0x252E190;
-    uintptr_t xRotate = (uintptr_t)(modInfo.lpBaseOfDll) + 0x252E158;
-    uintptr_t yAll = (uintptr_t)(modInfo.lpBaseOfDll) + 0x14252E1C4;
-    uintptr_t yOut = (uintptr_t)(modInfo.lpBaseOfDll) + 0x252E1C8;
-    uintptr_t yTiltIn = (uintptr_t)(modInfo.lpBaseOfDll) + 0x252E1E4;
-    uintptr_t yTiltOut = (uintptr_t)(modInfo.lpBaseOfDll) + 0x252E1E8;
-    uintptr_t zAll = (uintptr_t)(modInfo.lpBaseOfDll) + 0x252E1E0;
-    uintptr_t zIn = (uintptr_t)(modInfo.lpBaseOfDll) + 0x252E1A0;
-    uintptr_t zOut = (uintptr_t)(modInfo.lpBaseOfDll) + 0x252E1AC;
+int camera_hack::set_angle(const camera_struct &angle) {
+    uintptr_t xAxis = (uintptr_t) (modInfo.lpBaseOfDll) + 0x252E190;
+    uintptr_t xRotate = (uintptr_t) (modInfo.lpBaseOfDll) + 0x252E158;
+    uintptr_t yAll = (uintptr_t) (modInfo.lpBaseOfDll) + 0x14252E1C4;
+    uintptr_t yOut = (uintptr_t) (modInfo.lpBaseOfDll) + 0x252E1C8;
+    uintptr_t yTiltIn = (uintptr_t) (modInfo.lpBaseOfDll) + 0x252E1E4;
+    uintptr_t yTiltOut = (uintptr_t) (modInfo.lpBaseOfDll) + 0x252E1E8;
+    uintptr_t zAll = (uintptr_t) (modInfo.lpBaseOfDll) + 0x252E1E0;
+    uintptr_t zIn = (uintptr_t) (modInfo.lpBaseOfDll) + 0x252E1A0;
+    uintptr_t zOut = (uintptr_t) (modInfo.lpBaseOfDll) + 0x252E1AC;
 
-    int xAxis_return = WriteProcessMemory(l_handle, (LPVOID)xAxis, &angle.x_axis, sizeof(float), nullptr);
-    int xRotate_return = WriteProcessMemory(l_handle, (LPVOID)xRotate, &angle.x_rotation, sizeof(float), nullptr);
-    int yAll_return = WriteProcessMemory(l_handle, (LPVOID)yAll, &angle.y_all, sizeof(float), nullptr);
-    int yOut_return = WriteProcessMemory(l_handle, (LPVOID)yOut, &angle.y_out_ring, sizeof(float), nullptr);
-    int yTiltIn_return = WriteProcessMemory(l_handle, (LPVOID)yTiltIn, &angle.y_tilt_in_ring, sizeof(float), nullptr);
-    int yTiltOut_return = WriteProcessMemory(l_handle, (LPVOID)yTiltOut, &angle.y_tilt_out_ring, sizeof(float), nullptr);
-    int zAll_return = WriteProcessMemory(l_handle, (LPVOID)zAll, &angle.z_all, sizeof(float), nullptr);
-    int zIn_return = WriteProcessMemory(l_handle, (LPVOID)zIn, &angle.z_in_ring, sizeof(float), nullptr);
-    int zOut_return = WriteProcessMemory(l_handle, (LPVOID)zOut, &angle.z_out_ring, sizeof(float), nullptr);
+    int xAxis_return = WriteProcessMemory(l_handle, (LPVOID) xAxis, &angle.x_axis, sizeof(float), nullptr);
+    int xRotate_return = WriteProcessMemory(l_handle, (LPVOID) xRotate, &angle.x_rotation, sizeof(float), nullptr);
+    int yAll_return = WriteProcessMemory(l_handle, (LPVOID) yAll, &angle.y_all, sizeof(float), nullptr);
+    int yOut_return = WriteProcessMemory(l_handle, (LPVOID) yOut, &angle.y_out_ring, sizeof(float), nullptr);
+    int yTiltIn_return = WriteProcessMemory(l_handle, (LPVOID) yTiltIn, &angle.y_tilt_in_ring, sizeof(float), nullptr);
+    int yTiltOut_return = WriteProcessMemory(l_handle, (LPVOID) yTiltOut, &angle.y_tilt_out_ring, sizeof(float),
+                                             nullptr);
+    int zAll_return = WriteProcessMemory(l_handle, (LPVOID) zAll, &angle.z_all, sizeof(float), nullptr);
+    int zIn_return = WriteProcessMemory(l_handle, (LPVOID) zIn, &angle.z_in_ring, sizeof(float), nullptr);
+    int zOut_return = WriteProcessMemory(l_handle, (LPVOID) zOut, &angle.z_out_ring, sizeof(float), nullptr);
 
-    return xAxis_return, xRotate_return, yAll_return, yOut_return,zAll_return, zIn_return, zOut_return, yTiltIn_return, yTiltOut_return;
+    return xAxis_return, xRotate_return, yAll_return, yOut_return, zAll_return, zIn_return, zOut_return, yTiltIn_return, yTiltOut_return;
 }
 
 

@@ -28,8 +28,7 @@ void Controller::menu()
 }
 
 // this will have list of manual camera options from myself;
-void Controller::camera_options()
-{
+void Controller::camera_options() {
     printf("========================================================");
     printf("\n");
     printf("1. HCTP Camera");
@@ -44,16 +43,13 @@ void Controller::camera_options()
     hack.get_modules();
     std::cin >> choice;
 
-    if(choice == 1){
+    if (choice == 1) {
         hack.hctpCamera();
-    } else if(choice == 2){
+    } else if (choice == 2) {
         hack.nose_bleeds();
-    } else if(choice == 3){
+    } else if (choice == 3) {
         hack.default_cam();
-    } else{
-        stop();
     }
-
 }
 
 void Controller::controller_loop()
@@ -74,7 +70,7 @@ void Controller::choices() {
     if(choice == 1) {
         do {
             camera_options();
-        } while (choice == 1);
+        } while (true);
     }
 }
 

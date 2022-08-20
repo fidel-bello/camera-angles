@@ -58,12 +58,10 @@ public:
     explicit camera_hack(const char *window_handle);
     ~camera_hack();
     bool findProcessID();
-    int open_process();
+    bool open_process();
     int get_modules();
-    int get_memory();
-
-    void nop_test() const;
-    void revert_test();
+    //void nop_test() const;
+    //void revert_test();
 
     //camera angles for mod menu of choices
     int hctpCamera();

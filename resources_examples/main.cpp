@@ -1,3 +1,4 @@
+/*
 #include <iostream>
 #include <windows.h>
 #include <winuser.h>
@@ -93,3 +94,32 @@ int main() {
     //14252E158
     return 0;
 }
+
+
+ void camera_hack::nop_test() const
+{
+    int size = 4; // size of array
+    unsigned int funcAddress = 0x36513B5; //address of the function im testing
+    uintptr_t addressToReplace = (uintptr_t)(modInfo.lpBaseOfDll) + funcAddress; // base address + function address
+    char* newArray = dynamic_nop(size, NOP);
+    WriteProcessMemory(l_handle, (LPVOID)addressToReplace, newArray, size, nullptr); //pushes newArray to the process
+    delete [] newArray;
+}
+
+void camera_hack::revert_test()
+{
+    int size = 4;
+    unsigned int funcAddress = 0x36513B5;
+    uintptr_t addressToReplace = (uintptr_t)(modInfo.lpBaseOfDll) + funcAddress;
+    unsigned char array[] = { DEFAULT_TEST };
+    unsigned char* newArr = revert_address(array, size, l_handle, (LPVOID)addressToReplace);
+    if(!l_handle || !addressToReplace || newArr == 0)
+    {
+        printf("Error: not Successful");
+        printf("\n");
+    }
+    delete[] newArr;
+}
+  */
+
+

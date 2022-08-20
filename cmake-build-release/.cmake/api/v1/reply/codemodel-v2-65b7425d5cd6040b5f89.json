@@ -49,7 +49,7 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/fidel/Desktop/github_projects/new_camera_hack/cmake-build-release-mingw",
+		"build" : "C:/Users/fidel/Desktop/github_projects/new_camera_hack/cmake-build-release",
 		"source" : "C:/Users/fidel/Desktop/github_projects/new_camera_hack"
 	},
 	"version" : 

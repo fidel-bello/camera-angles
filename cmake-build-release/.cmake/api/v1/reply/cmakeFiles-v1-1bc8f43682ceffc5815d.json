@@ -16,7 +16,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "cmake-build-release-mingw/CMakeFiles/3.23.2/CMakeSystem.cmake"
+			"path" : "cmake-build-release/CMakeFiles/3.23.2/CMakeSystem.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -265,7 +265,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "cmake-build-release-mingw/CMakeFiles/3.23.2/CMakeCCompiler.cmake"
+			"path" : "cmake-build-release/CMakeFiles/3.23.2/CMakeCCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -504,7 +504,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "cmake-build-release-mingw/CMakeFiles/3.23.2/CMakeCXXCompiler.cmake"
+			"path" : "cmake-build-release/CMakeFiles/3.23.2/CMakeCXXCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -578,7 +578,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "cmake-build-release-mingw/CMakeFiles/3.23.2/CMakeRCCompiler.cmake"
+			"path" : "cmake-build-release/CMakeFiles/3.23.2/CMakeRCCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -657,7 +657,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "cmake-build-release-mingw/CMakeFiles/3.23.2/CMakeCCompiler.cmake"
+			"path" : "cmake-build-release/CMakeFiles/3.23.2/CMakeCCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -756,7 +756,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "cmake-build-release-mingw/CMakeFiles/3.23.2/CMakeCXXCompiler.cmake"
+			"path" : "cmake-build-release/CMakeFiles/3.23.2/CMakeCXXCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -767,7 +767,7 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "C:/Users/fidel/Desktop/github_projects/new_camera_hack/cmake-build-release-mingw",
+		"build" : "C:/Users/fidel/Desktop/github_projects/new_camera_hack/cmake-build-release",
 		"source" : "C:/Users/fidel/Desktop/github_projects/new_camera_hack"
 	},
 	"version" : 

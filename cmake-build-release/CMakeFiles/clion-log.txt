@@ -1,4 +1,4 @@
-"C:\Program Files\JetBrains\CLion 2022.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Release "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2022.2/bin/ninja/win/ninja.exe" -G Ninja -S C:\Users\fidel\Desktop\github_projects\new_camera_hack -B C:\Users\fidel\Desktop\github_projects\new_camera_hack\cmake-build-release-mingw
+"C:\Program Files\JetBrains\CLion 2022.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Release "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2022.2/bin/ninja/win/ninja.exe" -G Ninja -S C:\Users\fidel\Desktop\github_projects\new_camera_hack -B C:\Users\fidel\Desktop\github_projects\new_camera_hack\cmake-build-release
 -- The C compiler identification is GNU 11.2.0
 -- The CXX compiler identification is GNU 11.2.0
 -- Detecting C compiler ABI info
@@ -13,4 +13,4 @@
 -- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: C:/Users/fidel/Desktop/github_projects/new_camera_hack/cmake-build-release-mingw
+-- Build files have been written to: C:/Users/fidel/Desktop/github_projects/new_camera_hack/cmake-build-release

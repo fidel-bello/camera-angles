@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/fidel/Desktop/github_projects/new_camera_hack/cmake-build-release-mingw"
+			"value" : "c:/Users/fidel/Desktop/github_projects/new_camera_hack/cmake-build-release"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -1239,7 +1239,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/fidel/Desktop/github_projects/new_camera_hack/cmake-build-release-mingw"
+			"value" : "C:/Users/fidel/Desktop/github_projects/new_camera_hack/cmake-build-release"
 		},
 		{
 			"name" : "camera_hack_IS_TOP_LEVEL",

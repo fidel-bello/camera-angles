@@ -76,7 +76,7 @@ int camera_hack::get_modules() {
     {
         file_name[2048];
         GetModuleFileNameExA(l_handle, hModule[i], file_name, 2048);
-        if (std::string(file_name).find("WWE2K22_x64.exe") != std::string::npos)
+        if (std::string(file_name).find("WWE2K19_x64.exe") != std::string::npos  || std::string(file_name).find("WWE2K22_x64.exe") != std::string::npos)
         {
             id_of_module_in_array = i;
         }
@@ -164,6 +164,7 @@ std::vector<unsigned int> camera_hack::get_offsetsHelper(std::vector<unsigned in
         ReadProcessMemory(l_handle, (LPVOID) ptr, &ptr, sizeof(ptr), nullptr);
         ptr += address[i];
     }
+
     char* free_xAxis = dynamic_nop(size_of_x_function, NOP);
     WriteProcessMemory(l_handle, (LPVOID)xRotate_func, free_xAxis, size_of_x_function, nullptr);
 
@@ -177,10 +178,6 @@ std::vector<unsigned int> camera_hack::get_offsetsHelper(std::vector<unsigned in
     ReadProcessMemory(l_handle, (LPVOID) ptr, &val, sizeof(float), nullptr);
 
     WriteProcessMemory(l_handle, (LPVOID)ptr, &newVal, sizeof(float), nullptr);
-
-    std::cout << std::hex << ptr << "\n";
-    std::cout << val << "\n";
-    std::cout << newVal << "\n";
 
     return address;
 }
@@ -263,8 +260,8 @@ void camera_hack::ring_side22() {
     float default_z;
 
     float new_x_rotate = 1.200000048;
-    float new_y_tilt = -0.1000000015;
-    float new_z = 1000;
+    float new_y_tilt = -0.001000000047;
+    float new_z = 1300;
 
     get_offsetsHelper(address.xRotate, xRotate_address, default_x_rotate, new_x_rotate);
     get_offsetsHelper(address.zAxis, zAxis_address, default_z, new_z);

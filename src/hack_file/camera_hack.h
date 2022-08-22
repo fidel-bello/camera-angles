@@ -56,7 +56,7 @@ private:
     int set_angle(const camera_struct &angle);
 
     //2k22
-    std::vector<unsigned int> get_offsetsHelper(std::vector<unsigned int> address, uintptr_t ptr, float val);
+    std::vector<unsigned int> get_offsetsHelper(std::vector<unsigned int> address, uintptr_t ptr, float val, float newVal);
 
 public:
     explicit camera_hack(const char *window_handle);
@@ -72,8 +72,10 @@ public:
     int default_cam();
 
 //# 2k22
-    void hctp();
+    void nose_bleeds22();
     void default_cam22();
+    void hctp22();
+    void ring_side22();
 };
 
 

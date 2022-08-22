@@ -22,7 +22,12 @@
     * delinx
 
   ## Usage
+   * 19
    * https://user-images.githubusercontent.com/73322116/185727920-a7ef1e5f-5536-4c11-818d-db0ed5ec20f4.mp4
+   * 22
+   * Uploading bandicam 2022-08-22 13-51-05-650_Trim.mp4…
+
+
     
 
 

@@ -10,7 +10,9 @@ int main()
     hack.findProcessID();
     hack.open_process();
     hack.get_modules();
-    hack.hctp();
+    hack.nose_bleeds22();
     hack.default_cam22();
+    hack.hctp22();
+    hack.ring_side22();
     return 0;
 }

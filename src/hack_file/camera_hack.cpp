@@ -3,8 +3,11 @@
 //
 #include "camera_hack.h"
 #include "./helpers/helpers.cpp"
+#include "./constants/constants.h"
+
 
 #pragma clang diagnostic push
+#pragma ide diagnostic ignored "ConstantParameter"
 #pragma ide diagnostic ignored "ConstantFunctionResult"
 #pragma clang diagnostic ignored "-Wconstant-conversion"
 #pragma ide diagnostic ignored "ArrayIndexOutOfBounds"
@@ -73,7 +76,7 @@ int camera_hack::get_modules() {
     {
         file_name[2048];
         GetModuleFileNameExA(l_handle, hModule[i], file_name, 2048);
-        if (std::string(file_name).find("WWE2K19_x64.exe") != std::string::npos)
+        if (std::string(file_name).find("WWE2K22_x64.exe") != std::string::npos)
         {
             id_of_module_in_array = i;
         }
@@ -114,6 +117,7 @@ int camera_hack::ring_side() {
 }
 
 int camera_hack::set_angle(const camera_struct &angle) {
+
     uintptr_t xAxis = (uintptr_t) (modInfo.lpBaseOfDll) + 0x252E190;
     uintptr_t xRotate = (uintptr_t) (modInfo.lpBaseOfDll) + 0x252E158;
     uintptr_t yAll = (uintptr_t) (modInfo.lpBaseOfDll) + 0x14252E1C4;
@@ -136,6 +140,82 @@ int camera_hack::set_angle(const camera_struct &angle) {
     WriteProcessMemory(l_handle, (LPVOID) zOut, &angle.z_out_ring, sizeof(float), nullptr);
 
     return true;
+}
+
+/**
+ *
+ * @param angle takes in address from the camera struct
+ * @return r
+ */
+
+std::vector<unsigned int> camera_hack::get_offsetsHelper(std::vector<unsigned int>address, uintptr_t ptr, float val)
+{
+    uintptr_t game = (uintptr_t)(modInfo.lpBaseOfDll);
+    uintptr_t xRotate_func = game + 0x792F84;
+    uintptr_t zAxis_func = game + 0x79606E;
+    uintptr_t yAxis_func = game + 0x7937EA;
+
+    int size_of_z_function = 6;
+    int size_of_x_function = 8;
+
+    for(unsigned int i = 0; i < address.size(); ++i)
+    {
+        ReadProcessMemory(l_handle, (LPVOID) ptr, &ptr, sizeof(ptr), nullptr);
+        ptr += address[i];
+    }
+    char* free_xAxis = dynamic_nop(size_of_x_function, NOP);
+    WriteProcessMemory(l_handle, (LPVOID)xRotate_func, free_xAxis, size_of_x_function, nullptr);
+
+    char* free_zAxis = dynamic_nop(size_of_z_function, NOP);
+    WriteProcessMemory(l_handle, (LPVOID)zAxis_func, free_zAxis, size_of_z_function, nullptr);
+
+    char* free_yAxis = dynamic_nop(size_of_x_function, NOP);
+    WriteProcessMemory(l_handle, (LPVOID)yAxis_func, free_yAxis, size_of_x_function, nullptr);
+    delete[] free_xAxis, free_zAxis, free_yAxis;
+
+    ReadProcessMemory(l_handle, (LPVOID) ptr, &val, sizeof(float), nullptr);
+
+    std::cout << std::hex << ptr << "\n";
+    std::cout << val << "\n";
+
+    return address;
+}
+
+void camera_hack::hctp() {
+
+    uintptr_t game =(uintptr_t) modInfo.lpBaseOfDll;
+    uintptr_t xRotate_address = game + 0x036ED358;
+    uintptr_t zAxis_address = game + 0x036ED358;
+    uintptr_t yTilt_address = game + 0x036ED368;
+
+    camera_addresses_22 address;
+
+    float rotate_val;
+    float newTilt = -2.00000003;
+    float newZ = 2500;
+
+    get_offsetsHelper(address.xRotate, xRotate_address, rotate_val);
+    //get_offsetsHelper(address.zAxis, zAxis_address, newRotate);
+   // get_offsetsHelper(address.yTilt, yTilt_address, newRotate);
+
+}
+
+void camera_hack::default_cam22()
+{
+    uintptr_t game = (uintptr_t)(modInfo.lpBaseOfDll);
+    uintptr_t xRotate_func =(uintptr_t) game + 0x792F84;
+    uintptr_t zAxis_func = game + 0x79606E;
+    uintptr_t yAxis_func = game + 0x7937EA;
+
+    unsigned char xRotateArray[] =  {X_ROTATE_FUNC };
+    unsigned char* newRotateArray = revert_address(xRotateArray, 8, l_handle, (LPVOID)xRotate_func);
+
+    unsigned char zArray[] = { Z_FUNC };
+    unsigned char* newZArray = revert_address(zArray, 6, l_handle, (LPVOID)zAxis_func);
+
+    unsigned char yArray[] = { Y_Tilt_FUNC };
+    unsigned char* newYArray = revert_address(yArray, 8, l_handle, (LPVOID)yAxis_func);
+    delete [] newRotateArray, newZArray, newYArray;
 }
 
 

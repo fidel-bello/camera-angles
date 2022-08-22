@@ -6,8 +6,11 @@
 
 int main()
 {
-    Controller start;
-    start.menu();
-    start.controller_loop();
+   camera_hack hack("WWE 2K22");
+    hack.findProcessID();
+    hack.open_process();
+    hack.get_modules();
+    hack.hctp();
+    hack.default_cam22();
     return 0;
 }

@@ -16,7 +16,6 @@ struct Controller
     void choices();
 
     void controller_loop();
-    void stop();
     void menu();
 };
 
@@ -77,11 +76,6 @@ void Controller::choices() {
         } while (true);
     }
 }
-
-void Controller::stop() {
-    exit(1);
-}
-
 
 #endif //NEW_CAMERA_HACK_CONTROLLER_H
 

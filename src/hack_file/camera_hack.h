@@ -15,7 +15,7 @@
 #include <ostream>
 #include <iostream>
 #include <vector>
-
+#include <array>
 
 
 /*
@@ -24,13 +24,7 @@
  * these are passed in a function that automatically defaults them back to their original values
  * to make the hack work, I had to disable the functions with an assembler nop
  * */
-/*
-struct COORDS { for future use WWE 2K22
-    std::vector<unsigned int>heightRotation = { 0x18, 0x0, 0x28, 0x18, 0x164 }; //address = baseExe + 0x036ED368
-    std::vector<unsigned int>zoom = { 0x20, 0x28, 0x28, 0x18, 0x178 }; // address = baseExe + 0x036ED358
-    std::vector<unsigned int>rotation = { 0x20, 0x38, 0x30, 0x18, 0x158 }; //address = baseExe + 0x036ED358
-};
-*/
+
 class camera_hack {
 private:
     struct camera_struct
@@ -46,26 +40,40 @@ private:
         float z_out_ring;//default 290 -> 0x252E1AC
     };
 
+    struct camera_addresses_22
+    {
+        std::vector<unsigned int> xRotate = {0x20, 0x38, 0x30, 0x18, 0x158 };
+        std::vector<unsigned int> yTilt = { 0x18, 0x0, 0x28, 0x18, 0x164 };
+        std::vector<unsigned int> zAxis = { 0x20, 0x28, 0x28, 0x18, 0x178 };
+    };
+
+
     HWND window_name{};
     DWORD processID{};
     HANDLE l_handle{};
     MODULEINFO modInfo{};
 
     int set_angle(const camera_struct &angle);
+
+    //2k22
+    std::vector<unsigned int> get_offsetsHelper(std::vector<unsigned int> address, uintptr_t ptr, float val);
+
 public:
     explicit camera_hack(const char *window_handle);
     ~camera_hack();
     bool findProcessID();
     bool open_process();
     int get_modules();
-    //void nop_test() const;
-    //void revert_test();
+
 //camera angles for mod menu of choices #2k19
     int hctpCamera();
     int nose_bleeds();
     int ring_side();
     int default_cam();
 
+//# 2k22
+    void hctp();
+    void default_cam22();
 };
 
 

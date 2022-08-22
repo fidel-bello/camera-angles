@@ -23,7 +23,7 @@ char *dynamic_nop(int size, char val)
 //create empty arr, insert elements from input array, new-arr = input-arr;
 unsigned char* revert_address(unsigned char array[], int size, HANDLE hProc, LPVOID baseAddress)
 {
-    unsigned char* newArray = new unsigned char[size];
+     unsigned char* newArray = new unsigned char[size];
     for(int i = 0; i < size; i++)
     {
         newArray[i] = array[i];

@@ -23,7 +23,7 @@
 
   ## Usage
    * 19
-   *  <a target="_blank">https://user-images.githubusercontent.com/73322116/185727920-a7ef1e5f-5536-4c11-818d-db0ed5ec20f4.mp4</a>
+   * https://user-images.githubusercontent.com/73322116/185727920-a7ef1e5f-5536-4c11-818d-db0ed5ec20f4.mp4
 
 
     

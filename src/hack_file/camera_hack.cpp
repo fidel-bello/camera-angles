@@ -21,8 +21,6 @@
 camera_hack::camera_hack(const char* window_handle)
 {
     window_name = FindWindowA(nullptr, window_handle);
-    if(!window_name) printf("Error: Window not found");
-    //else printf("window found");
     processID = 0;
     l_handle = nullptr;
     modInfo;
@@ -41,11 +39,10 @@ bool camera_hack::findProcessID()
         printf("\nFailed to get procID from HWND\n");
         return true;
     }
-
    return processID;
 }
 
-bool camera_hack::open_process()
+int camera_hack::open_process()
 {
     l_handle = OpenProcess(PROCESS_ALL_ACCESS, true, processID);
     if(l_handle == nullptr)
@@ -54,6 +51,7 @@ bool camera_hack::open_process()
         printf("Error: failed to open process\n");
         return false;
     }
+    printf("Opened process");
     return true;
 }
 
@@ -90,7 +88,8 @@ int camera_hack::get_modules() {
     {
         return 1;
     }
-    return -1;
+
+    printf("got modules\n");
 }
 
 //camera angles

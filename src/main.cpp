@@ -3,8 +3,34 @@
 **/
 #include "./hack_file/controller/controller.h"
 
-int main(){
-    Controller start;
-    start.controller_loop();
+Controller *control = nullptr;
+int choice;
+
+int main()
+{
+    control = new Controller();
+
+    control->title_options();
+
+    std::cin >> choice;
+
+    if(choice == 1)
+    {
+        control->init();
+    } else if(choice == 2)
+    {
+        control->init_22();
+    }
+
+    while (control->running())
+    {
+        if(choice == 1)
+        {
+            control->cam_options_19();
+        } else if(choice == 2)
+        {
+            control->cam_options_22();
+        }
+    }
     return 0;
 }

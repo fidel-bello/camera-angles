@@ -63,7 +63,7 @@ public:
     explicit camera_hack(const char *window_handle);
     ~camera_hack();
     bool findProcessID();
-    bool open_process();
+    int open_process();
     int get_modules();
 
 //camera angles for mod menu of choices #2k19

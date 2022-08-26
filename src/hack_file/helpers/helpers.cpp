@@ -7,8 +7,8 @@
  * size == the size of the array, val = NOP or whatever value you want to pass in;
  * will be useful for future functions that have to be nop for the mod to work
  **/
-#include "../camera_hack.h"
 
+#include "../camera_hack.h"
 
 char *dynamic_nop(int size, char val)
 {

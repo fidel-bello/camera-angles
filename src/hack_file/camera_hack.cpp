@@ -154,6 +154,7 @@ std::vector<unsigned int> camera_hack::get_offsetsHelper(std::vector<unsigned in
     uintptr_t xRotate_func = game + 0x0793414;
     uintptr_t zAxis_func = game + 0x07964FE;
     uintptr_t yAxis_func = game + 0x0793C7A;
+    uintptr_t yAxis1_func = game + 0x7964A0;
 
     int size_of_z_function = 6;
     int size_of_x_function = 8;
@@ -174,6 +175,9 @@ std::vector<unsigned int> camera_hack::get_offsetsHelper(std::vector<unsigned in
     char* free_yAxis = dynamic_nop(size_of_x_function, NOP);
     WriteProcessMemory(l_handle, (LPVOID)yAxis_func, free_yAxis, size_of_x_function, nullptr);
 
+    char* free_yAxisOne  = dynamic_nop(size_of_x_function, NOP);
+    WriteProcessMemory(l_handle, (LPVOID)yAxis1_func, free_yAxisOne, size_of_x_function, nullptr);
+
     ReadProcessMemory(l_handle, (LPVOID) ptr, &val, sizeof(float), nullptr);
 
     WriteProcessMemory(l_handle, (LPVOID)ptr, &newVal, sizeof(float), nullptr);
@@ -187,6 +191,7 @@ void camera_hack::nose_bleeds22() {
     uintptr_t xRotate_address = (uintptr_t)game + 0x036ED358;
     uintptr_t zAxis_address = (uintptr_t)game + 0x036ED358;
     uintptr_t yTilt_address = (uintptr_t)game + 0x036ED368;
+    uintptr_t y_address = (uintptr_t) game + 0x036ED368;
 
     camera_addresses_22 address;
 
@@ -197,10 +202,13 @@ void camera_hack::nose_bleeds22() {
     float new_x_rotate = 1;
     float new_y_tilt = -0.200000003;
     float new_z = 2500;
+    float default_y;
+    float new_y = -300;
 
     get_offsetsHelper(address.xRotate, xRotate_address, default_x_rotate, new_x_rotate);
     get_offsetsHelper(address.zAxis, zAxis_address, default_z, new_z);
     get_offsetsHelper(address.yTilt, yTilt_address,default_y_tilt, new_y_tilt);
+    get_offsetsHelper(address.y_axis, y_address, default_y, new_y);
 
 }
 
@@ -211,6 +219,7 @@ void camera_hack::default_cam22()
     uintptr_t xRotate_func = game + 0x0793414;
     uintptr_t zAxis_func = game + 0x07964FE;
     uintptr_t yAxis_func = game + 0x0793C7A;
+    uintptr_t yAxis1_func = game + 0x07964A0;
 
         unsigned char xRotateArray[] =  {X_ROTATE_FUNC };
         unsigned char* newXRotateArr = revert_address(xRotateArray, 8, l_handle, (LPVOID)xRotate_func);
@@ -223,6 +232,10 @@ void camera_hack::default_cam22()
         unsigned char yArray[] = { Y_Tilt_FUNC };
         unsigned char *newYArray = revert_address(yArray, 8, l_handle, (LPVOID)yAxis_func);
         delete[] newYArray;
+
+        unsigned char yOneArray[] = { Y_FUNC };
+        unsigned char* newYOneArray = revert_address(yOneArray, 8, l_handle, (LPVOID)yAxis1_func);
+        delete[] newYOneArray;
 }
 
 void camera_hack::hctp22() {
@@ -254,20 +267,24 @@ void camera_hack::ring_side22() {
     uintptr_t xRotate_address = (uintptr_t)game + 0x036ED358;
     uintptr_t zAxis_address = (uintptr_t)game + 0x036ED358;
     uintptr_t yTilt_address = (uintptr_t)game + 0x036ED368;
+    uintptr_t y_address = (uintptr_t) game + 0x036ED368;
 
     camera_addresses_22 address;
 
     float default_x_rotate;
     float default_y_tilt;
     float default_z;
+    float default_y;
 
     float new_x_rotate = 1.200000048;
     float new_y_tilt = -0.001000000047;
     float new_z = 1300;
+    float new_y = -300;
 
     get_offsetsHelper(address.xRotate, xRotate_address, default_x_rotate, new_x_rotate);
     get_offsetsHelper(address.zAxis, zAxis_address, default_z, new_z);
     get_offsetsHelper(address.yTilt, yTilt_address,default_y_tilt, new_y_tilt);
+    get_offsetsHelper(address.y_axis, y_address, default_y, new_y);
 }
 
 

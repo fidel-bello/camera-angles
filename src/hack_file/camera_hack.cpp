@@ -88,8 +88,7 @@ int camera_hack::get_modules() {
     {
         return 1;
     }
-
-    printf("got modules\n");
+    return -1;
 }
 
 //camera angles

@@ -5,15 +5,15 @@
 #ifndef NEW_CAMERA_HACK_CONTROLLER_H
 #define NEW_CAMERA_HACK_CONTROLLER_H
 
-#include "../camera_hack.h"
+#include "../cam_mod/camera_hack.h"
 
 class Controller
 {
 private:
     bool isRunning;
 
-    camera_hack hack{ "WWE 2K19" };
-    camera_hack hack_2{ "WWE 2K22" };
+    camera_hack *hack = new camera_hack("WWE 2K19");
+    camera_hack *hack_2 = new camera_hack("WWE 2K22");
 
 public:
     Controller();

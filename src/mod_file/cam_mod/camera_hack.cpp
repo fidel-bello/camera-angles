@@ -1,9 +1,10 @@
 //
 // Created by fidel on 8/11/2022.
 //
+#include <ostream>
 #include "camera_hack.h"
-#include "./helpers/helpers.cpp"
-#include "./constants/constants.h"
+#include "../helpers/helpers.cpp"
+#include "../constants/constants.h"
 
 
 #pragma clang diagnostic push
@@ -51,7 +52,6 @@ int camera_hack::open_process()
         printf("Error: failed to open process\n");
         return false;
     }
-    printf("Opened process");
     return true;
 }
 
@@ -207,7 +207,6 @@ void camera_hack::nose_bleeds22() {
     get_offsetsHelper(address.zAxis, zAxis_address, default_z, new_z);
     get_offsetsHelper(address.yTilt, yTilt_address,default_y_tilt, new_y_tilt);
     get_offsetsHelper(address.y_axis, y_address, default_y, new_y);
-
 }
 
 void camera_hack::default_cam22()
@@ -256,11 +255,9 @@ void camera_hack::hctp22() {
     get_offsetsHelper(address.xRotate, xRotate_address, default_x_rotate, new_x_rotate);
     get_offsetsHelper(address.zAxis, zAxis_address, default_z, new_z);
     get_offsetsHelper(address.yTilt, yTilt_address,default_y_tilt, new_y_tilt);
-
 }
 
 void camera_hack::ring_side22() {
-
     uintptr_t game =(uintptr_t) modInfo.lpBaseOfDll;
     uintptr_t xRotate_address = (uintptr_t)game + 0x036ED358;
     uintptr_t zAxis_address = (uintptr_t)game + 0x036ED358;
@@ -274,10 +271,10 @@ void camera_hack::ring_side22() {
     float default_z;
     float default_y;
 
-    float new_x_rotate = 1.200000048;
+    float new_x_rotate = 0.8000000119;
     float new_y_tilt = -0.001000000047;
-    float new_z = 1300;
-    float new_y = -300;
+    float new_z = 1500;
+    float new_y = -210;
 
     get_offsetsHelper(address.xRotate, xRotate_address, default_x_rotate, new_x_rotate);
     get_offsetsHelper(address.zAxis, zAxis_address, default_z, new_z);

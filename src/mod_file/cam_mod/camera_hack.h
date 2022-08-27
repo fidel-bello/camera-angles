@@ -67,10 +67,10 @@ public:
     int get_modules();
 
 //camera angles for mod menu of choices #2k19
-    int hctpCamera();
-    int nose_bleeds();
-    int ring_side();
-    int default_cam();
+    void hctpCamera();
+    void nose_bleeds();
+    void ring_side();
+    void default_cam();
 
 //# 2k22
     void nose_bleeds22();

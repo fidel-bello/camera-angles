@@ -94,26 +94,56 @@ int camera_hack::get_modules() {
 }
 
 //camera angles
-int camera_hack::hctpCamera()
+void camera_hack::hctpCamera()
 {
-   camera_struct angle = { 1.75, 0.019, 80, 8, 9, 20, 12.5, 450, 500 };
-   return set_angle(angle);
+    if(isInitialized)
+    {
+        camera_struct angle = { 1.75, 0.019, 80, 8, 9, 20, 12.5, 450, 500 };
+        set_angle(angle);
+    }
+    else
+    {
+        isInitialized = false;
+    }
 }
 
-int camera_hack::nose_bleeds()
+void camera_hack::nose_bleeds()
 {
-    camera_struct angle = { 1.75, 1.200000048, 25, 10, -3, 12, 12.5, 700, 700 };
-    return set_angle(angle);
+    if(isInitialized)
+    {
+        camera_struct angle = { 1.75, 1.200000048, 25, 10, -3, 12, 12.5, 700, 700 };
+        set_angle(angle);
+    }
+    else
+    {
+        isInitialized = false;
+    }
+
 }
 
-int camera_hack::default_cam()
+void camera_hack::default_cam()
 {
-    camera_struct angle = { 1.75, 1.57, 25, 10, 3, 6.5, 12.5, 300, 290 };
-    return set_angle(angle);
+    if(isInitialized)
+    {
+        camera_struct angle = { 1.75, 1.57, 25, 10, 3, 6.5, 12.5, 300, 290 };
+        set_angle(angle);
+    } else
+    {
+        isInitialized = false;
+    }
+
+
 }
-int camera_hack::ring_side() {
-    camera_struct angle = { 1.75, 1.001000047, 30, 12, 12, 25, 8, 350, 300};
-    return set_angle(angle);
+void camera_hack::ring_side() {
+    if(isInitialized)
+    {
+        camera_struct angle = { 1.75, 1.001000047, 30, 12, 12, 25, 8, 350, 300};
+        set_angle(angle);
+    }
+    else
+    {
+        isInitialized = false;
+    }
 }
 
 int camera_hack::set_angle(const camera_struct &angle) {

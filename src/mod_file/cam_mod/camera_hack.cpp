@@ -38,6 +38,7 @@ bool camera_hack::findProcessID()
     if(processID == 0)
     {
         printf("\nFailed to get procID from HWND\n");
+        CloseHandle(window_name);
         return true;
     }
    return processID;
@@ -88,6 +89,7 @@ int camera_hack::get_modules() {
     {
         return 1;
     }
+    CloseHandle(window_name);
     return -1;
 }
 

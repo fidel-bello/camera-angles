@@ -56,7 +56,8 @@
 			"sourceIndexes" : 
 			[
 				0,
-				2
+				2,
+				4
 			]
 		}
 	],
@@ -94,7 +95,8 @@
 			"sourceIndexes" : 
 			[
 				0,
-				2
+				2,
+				4
 			]
 		},
 		{
@@ -116,19 +118,25 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "src/hack_file/camera_hack.h",
+			"path" : "src/mod_file/cam_mod/camera_hack.h",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/hack_file/camera_hack.cpp",
+			"path" : "src/mod_file/cam_mod/camera_hack.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
-			"path" : "src/hack_file/controller/controller.h",
+			"path" : "src/mod_file/controller/controller.h",
 			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/mod_file/controller/controller.cpp",
+			"sourceGroupIndex" : 0
 		}
 	],
 	"type" : "EXECUTABLE"

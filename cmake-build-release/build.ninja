@@ -55,11 +55,17 @@ build CMakeFiles/camera_hackcamera_hack.dir/src/main.cpp.obj: CXX_COMPILER__came
   OBJECT_DIR = CMakeFiles\camera_hackcamera_hack.dir
   OBJECT_FILE_DIR = CMakeFiles\camera_hackcamera_hack.dir\src
 
-build CMakeFiles/camera_hackcamera_hack.dir/src/hack_file/camera_hack.cpp.obj: CXX_COMPILER__camera_hackcamera_hack_Release C$:/Users/fidel/Desktop/github_projects/new_camera_hack/src/hack_file/camera_hack.cpp || cmake_object_order_depends_target_camera_hackcamera_hack
-  DEP_FILE = CMakeFiles\camera_hackcamera_hack.dir\src\hack_file\camera_hack.cpp.obj.d
+build CMakeFiles/camera_hackcamera_hack.dir/src/mod_file/cam_mod/camera_hack.cpp.obj: CXX_COMPILER__camera_hackcamera_hack_Release C$:/Users/fidel/Desktop/github_projects/new_camera_hack/src/mod_file/cam_mod/camera_hack.cpp || cmake_object_order_depends_target_camera_hackcamera_hack
+  DEP_FILE = CMakeFiles\camera_hackcamera_hack.dir\src\mod_file\cam_mod\camera_hack.cpp.obj.d
   FLAGS = -static-libstdc++ -static-libgcc -O3 -DNDEBUG -std=gnu++14
   OBJECT_DIR = CMakeFiles\camera_hackcamera_hack.dir
-  OBJECT_FILE_DIR = CMakeFiles\camera_hackcamera_hack.dir\src\hack_file
+  OBJECT_FILE_DIR = CMakeFiles\camera_hackcamera_hack.dir\src\mod_file\cam_mod
+
+build CMakeFiles/camera_hackcamera_hack.dir/src/mod_file/controller/controller.cpp.obj: CXX_COMPILER__camera_hackcamera_hack_Release C$:/Users/fidel/Desktop/github_projects/new_camera_hack/src/mod_file/controller/controller.cpp || cmake_object_order_depends_target_camera_hackcamera_hack
+  DEP_FILE = CMakeFiles\camera_hackcamera_hack.dir\src\mod_file\controller\controller.cpp.obj.d
+  FLAGS = -static-libstdc++ -static-libgcc -O3 -DNDEBUG -std=gnu++14
+  OBJECT_DIR = CMakeFiles\camera_hackcamera_hack.dir
+  OBJECT_FILE_DIR = CMakeFiles\camera_hackcamera_hack.dir\src\mod_file\controller
 
 
 # =============================================================================
@@ -69,7 +75,7 @@ build CMakeFiles/camera_hackcamera_hack.dir/src/hack_file/camera_hack.cpp.obj: C
 #############################################
 # Link the executable camera_hackcamera_hack.exe
 
-build camera_hackcamera_hack.exe: CXX_EXECUTABLE_LINKER__camera_hackcamera_hack_Release CMakeFiles/camera_hackcamera_hack.dir/src/main.cpp.obj CMakeFiles/camera_hackcamera_hack.dir/src/hack_file/camera_hack.cpp.obj
+build camera_hackcamera_hack.exe: CXX_EXECUTABLE_LINKER__camera_hackcamera_hack_Release CMakeFiles/camera_hackcamera_hack.dir/src/main.cpp.obj CMakeFiles/camera_hackcamera_hack.dir/src/mod_file/cam_mod/camera_hack.cpp.obj CMakeFiles/camera_hackcamera_hack.dir/src/mod_file/controller/controller.cpp.obj
   FLAGS = -static-libstdc++ -static-libgcc -O3 -DNDEBUG
   LINK_FLAGS = -static
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32

@@ -148,33 +148,12 @@ int camera_hack::set_angle(const camera_struct &angle) {
 
 std::vector<unsigned int> camera_hack::get_offsetsHelper(std::vector<unsigned int>address, uintptr_t ptr, float val, float newVal)
 {
-    uintptr_t game = (uintptr_t)(modInfo.lpBaseOfDll);
-    uintptr_t xRotate_func = game + 0x0793414;
-    uintptr_t zAxis_func = game + 0x07964FE;
-    uintptr_t yAxis_func = game + 0x0793C7A;
-    uintptr_t yAxis1_func = game + 0x7964A0;
-
-    int size_of_z_function = 6;
-    int size_of_x_function = 8;
-
 
     for(unsigned int i = 0; i < address.size(); ++i)
     {
         ReadProcessMemory(l_handle, (LPVOID) ptr, &ptr, sizeof(ptr), nullptr);
         ptr += address[i];
     }
-
-    char* free_xAxis = dynamic_nop(size_of_x_function, NOP);
-    WriteProcessMemory(l_handle, (LPVOID)xRotate_func, free_xAxis, size_of_x_function, nullptr);
-
-    char* free_zAxis = dynamic_nop(size_of_z_function, NOP);
-    WriteProcessMemory(l_handle, (LPVOID)zAxis_func, free_zAxis, size_of_z_function, nullptr);
-
-    char* free_yAxis = dynamic_nop(size_of_x_function, NOP);
-    WriteProcessMemory(l_handle, (LPVOID)yAxis_func, free_yAxis, size_of_x_function, nullptr);
-
-    char* free_yAxisOne  = dynamic_nop(size_of_x_function, NOP);
-    WriteProcessMemory(l_handle, (LPVOID)yAxis1_func, free_yAxisOne, size_of_x_function, nullptr);
 
     ReadProcessMemory(l_handle, (LPVOID) ptr, &val, sizeof(float), nullptr);
 
@@ -185,101 +164,207 @@ std::vector<unsigned int> camera_hack::get_offsetsHelper(std::vector<unsigned in
 
 void camera_hack::nose_bleeds22() {
 
-    uintptr_t game =(uintptr_t) modInfo.lpBaseOfDll;
-    uintptr_t xRotate_address = (uintptr_t)game + 0x036ED358;
-    uintptr_t zAxis_address = (uintptr_t)game + 0x036ED358;
-    uintptr_t yTilt_address = (uintptr_t)game + 0x036ED368;
-    uintptr_t y_address = (uintptr_t) game + 0x036ED368;
+    if(!isInitialized)
+    {
+        uintptr_t game =(uintptr_t) modInfo.lpBaseOfDll;
+        uintptr_t xRotate_address = (uintptr_t)game + 0x036ED358;
+        uintptr_t zAxis_address = (uintptr_t)game + 0x036ED358;
+        uintptr_t yTilt_address = (uintptr_t)game + 0x036ED368;
+        uintptr_t y_address = (uintptr_t) game + 0x036ED368;
 
-    camera_addresses_22 address;
+        uintptr_t xRotate_func = game + 0x0793414;
+        uintptr_t zAxis_func = game + 0x07964FE;
+        uintptr_t yAxis_func = game + 0x0793C7A;
+        uintptr_t yAxis1_func = game + 0x7964A0;
 
-    float default_x_rotate;
-    float default_y_tilt;
-    float default_z;
+        int size_of_z_function = 6;
+        int size_of_x_function = 8;
 
-    float new_x_rotate = 1;
-    float new_y_tilt = -0.200000003;
-    float new_z = 2500;
-    float default_y;
-    float new_y = -300;
+        camera_addresses_22 address;
 
-    get_offsetsHelper(address.xRotate, xRotate_address, default_x_rotate, new_x_rotate);
-    get_offsetsHelper(address.zAxis, zAxis_address, default_z, new_z);
-    get_offsetsHelper(address.yTilt, yTilt_address,default_y_tilt, new_y_tilt);
-    get_offsetsHelper(address.y_axis, y_address, default_y, new_y);
+        float default_x_rotate;
+        float default_y_tilt;
+        float default_z;
+
+        float new_x_rotate = 1;
+        float new_y_tilt = -0.200000003;
+        float new_z = 2500;
+        float default_y;
+        float new_y = -300;
+
+        char* free_xAxis = dynamic_nop(size_of_x_function, NOP);
+        WriteProcessMemory(l_handle, (LPVOID)xRotate_func, free_xAxis, size_of_x_function, nullptr);
+
+        char* free_zAxis = dynamic_nop(size_of_z_function, NOP);
+        WriteProcessMemory(l_handle, (LPVOID)zAxis_func, free_zAxis, size_of_z_function, nullptr);
+
+        char* free_yAxis = dynamic_nop(size_of_x_function, NOP);
+        WriteProcessMemory(l_handle, (LPVOID)yAxis_func, free_yAxis, size_of_x_function, nullptr);
+
+        char* free_yAxisOne  = dynamic_nop(size_of_x_function, NOP);
+        WriteProcessMemory(l_handle, (LPVOID)yAxis1_func, free_yAxisOne, size_of_x_function, nullptr);
+
+        if(xRotate_func && xRotate_address && yAxis_func && y_address && yTilt_address && yAxis1_func && zAxis_func, zAxis_address)
+        {
+            get_offsetsHelper(address.xRotate, xRotate_address, default_x_rotate, new_x_rotate);
+            get_offsetsHelper(address.zAxis, zAxis_address, default_z, new_z);
+            get_offsetsHelper(address.yTilt, yTilt_address,default_y_tilt, new_y_tilt);
+            get_offsetsHelper(address.y_axis, y_address, default_y, new_y);
+            delete[] free_yAxisOne, free_yAxis, free_zAxis, free_xAxis;
+        }
+
+        isInitialized = true;
+    } else
+    {
+
+        isInitialized = false;
+    }
 }
 
 void camera_hack::default_cam22()
 {
-    uintptr_t game = (uintptr_t)(modInfo.lpBaseOfDll);
+    if(!isInitialized)
+    {
+        uintptr_t game = (uintptr_t)(modInfo.lpBaseOfDll);
 
-    uintptr_t xRotate_func = game + 0x0793414;
-    uintptr_t zAxis_func = game + 0x07964FE;
-    uintptr_t yAxis_func = game + 0x0793C7A;
-    uintptr_t yAxis1_func = game + 0x07964A0;
+        uintptr_t xRotate_func = game + 0x0793414;
+        uintptr_t zAxis_func = game + 0x07964FE;
+        uintptr_t yAxis_func = game + 0x0793C7A;
+        uintptr_t yAxis1_func = game + 0x07964A0;
 
         unsigned char xRotateArray[] =  {X_ROTATE_FUNC };
-        unsigned char* newXRotateArr = revert_address(xRotateArray, 8, l_handle, (LPVOID)xRotate_func);
-        delete[] newXRotateArr;
-
         unsigned char zArray[] = { Z_FUNC };
-        unsigned char *newZArray = revert_address(zArray, 6, l_handle, (LPVOID)zAxis_func);
-        delete[] newZArray;
-
         unsigned char yArray[] = { Y_Tilt_FUNC };
-        unsigned char *newYArray = revert_address(yArray, 8, l_handle, (LPVOID)yAxis_func);
-        delete[] newYArray;
+        unsigned char yOneArray[] = { Y_FUNC };
+
+        if(xRotate_func && zAxis_func && yAxis_func && yAxis1_func)
+        {
+            unsigned char* newXRotateArr = revert_address(xRotateArray, 8, l_handle, (LPVOID)xRotate_func);
+            delete[] newXRotateArr;
+
+
+            unsigned char *newZArray = revert_address(zArray, 6, l_handle, (LPVOID)zAxis_func);
+            delete[] newZArray;
+
+
+            unsigned char *newYArray = revert_address(yArray, 8, l_handle, (LPVOID)yAxis_func);
+            delete[] newYArray;
+
+            unsigned char* newYOneArray = revert_address(yOneArray, 8, l_handle, (LPVOID)yAxis1_func);
+            delete[] newYOneArray;
+
+        }
+        isInitialized = true;
+    } else
+    {
+        isInitialized = false;
+    }
+}
+
+void camera_hack::hctp22()
+{
+    if(!isInitialized)
+    {
+        uintptr_t game =(uintptr_t)modInfo.lpBaseOfDll;
+        uintptr_t xRotate_address = (uintptr_t)game + 0x036ED358;
+        uintptr_t zAxis_address = (uintptr_t)game + 0x036ED358;
+        uintptr_t yTilt_address = (uintptr_t)game + 0x036ED368;
+        uintptr_t xRotate_func = game + 0x0793414;
+        uintptr_t zAxis_func = game + 0x07964FE;
+        uintptr_t yAxis_func = game + 0x0793C7A;
+        uintptr_t yAxis1_func = game + 0x07964A0;
+
+        camera_addresses_22 address;
+
+        float default_x_rotate;
+        float default_y_tilt;
+        float default_z;
+
+        float new_x_rotate = 0;
+        float new_y_tilt = -0.1000000015;
+        float new_z = 1050;
+
+        int size_of_z_function = 6;
+        int size_of_x_function = 8;
 
         unsigned char yOneArray[] = { Y_FUNC };
+
+        char* free_xAxis = dynamic_nop(size_of_x_function, NOP);
+        char* free_zAxis = dynamic_nop(size_of_z_function, NOP);
+        char* free_yAxis = dynamic_nop(size_of_x_function, NOP);
         unsigned char* newYOneArray = revert_address(yOneArray, 8, l_handle, (LPVOID)yAxis1_func);
-        delete[] newYOneArray;
+
+        if( xRotate_address && zAxis_address && yTilt_address && zAxis_func && yAxis_func && yAxis1_func && xRotate_func)
+        {
+            get_offsetsHelper(address.xRotate, xRotate_address, default_x_rotate, new_x_rotate);
+            get_offsetsHelper(address.zAxis, zAxis_address, default_z, new_z);
+            get_offsetsHelper(address.yTilt, yTilt_address,default_y_tilt, new_y_tilt);
+
+            WriteProcessMemory(l_handle, (LPVOID)xRotate_func, free_xAxis, size_of_x_function, nullptr);
+            WriteProcessMemory(l_handle, (LPVOID)zAxis_func, free_zAxis, size_of_z_function, nullptr);
+            WriteProcessMemory(l_handle, (LPVOID)yAxis_func, free_yAxis, size_of_x_function, nullptr);
+        }
+        delete[] newYOneArray, free_yAxis, free_zAxis, free_xAxis;
+        isInitialized = true;
+    } else
+    {
+        isInitialized = false;
+    }
 }
 
-void camera_hack::hctp22() {
+void camera_hack::ring_side22()
+{
+    if(isInitialized)
+    {
+        uintptr_t game =(uintptr_t) modInfo.lpBaseOfDll;
+        uintptr_t xRotate_address = (uintptr_t)game + 0x036ED358;
+        uintptr_t zAxis_address = (uintptr_t)game + 0x036ED358;
+        uintptr_t yTilt_address = (uintptr_t)game + 0x036ED368;
+        uintptr_t y_address = (uintptr_t) game + 0x036ED368;
+        uintptr_t xRotate_func = game + 0x0793414;
+        uintptr_t zAxis_func = game + 0x07964FE;
+        uintptr_t yAxis_func = game + 0x0793C7A;
+        uintptr_t yAxis1_func = game + 0x07964A0;
 
-    uintptr_t game =(uintptr_t) modInfo.lpBaseOfDll;
-    uintptr_t xRotate_address = (uintptr_t)game + 0x036ED358;
-    uintptr_t zAxis_address = (uintptr_t)game + 0x036ED358;
-    uintptr_t yTilt_address = (uintptr_t)game + 0x036ED368;
+        camera_addresses_22 address;
 
-    camera_addresses_22 address;
+        float default_x_rotate;
+        float default_y_tilt;
+        float default_z;
+        float default_y;
 
-    float default_x_rotate;
-    float default_y_tilt;
-    float default_z;
+        float new_x_rotate = 0.8000000119;
+        float new_y_tilt = -0.001000000047;
+        float new_z = 1500;
+        float new_y = -210;
 
-    float new_x_rotate = 0;
-    float new_y_tilt = -0.1000000015;
-    float new_z = 1050;
+        int size_of_z_function = 6;
+        int size_of_x_function = 8;
 
-    get_offsetsHelper(address.xRotate, xRotate_address, default_x_rotate, new_x_rotate);
-    get_offsetsHelper(address.zAxis, zAxis_address, default_z, new_z);
-    get_offsetsHelper(address.yTilt, yTilt_address,default_y_tilt, new_y_tilt);
-}
+        char* free_xAxis = dynamic_nop(size_of_x_function, NOP);
+        WriteProcessMemory(l_handle, (LPVOID)xRotate_func, free_xAxis, size_of_x_function, nullptr);
 
-void camera_hack::ring_side22() {
-    uintptr_t game =(uintptr_t) modInfo.lpBaseOfDll;
-    uintptr_t xRotate_address = (uintptr_t)game + 0x036ED358;
-    uintptr_t zAxis_address = (uintptr_t)game + 0x036ED358;
-    uintptr_t yTilt_address = (uintptr_t)game + 0x036ED368;
-    uintptr_t y_address = (uintptr_t) game + 0x036ED368;
+        char* free_zAxis = dynamic_nop(size_of_z_function, NOP);
+        WriteProcessMemory(l_handle, (LPVOID)zAxis_func, free_zAxis, size_of_z_function, nullptr);
 
-    camera_addresses_22 address;
+        char* free_yAxis = dynamic_nop(size_of_x_function, NOP);
+        WriteProcessMemory(l_handle, (LPVOID)yAxis_func, free_yAxis, size_of_x_function, nullptr);
 
-    float default_x_rotate;
-    float default_y_tilt;
-    float default_z;
-    float default_y;
+        char* free_yAxisOne  = dynamic_nop(size_of_x_function, NOP);
+        WriteProcessMemory(l_handle, (LPVOID)yAxis1_func, free_yAxisOne, size_of_x_function, nullptr);
 
-    float new_x_rotate = 0.8000000119;
-    float new_y_tilt = -0.001000000047;
-    float new_z = 1500;
-    float new_y = -210;
-
-    get_offsetsHelper(address.xRotate, xRotate_address, default_x_rotate, new_x_rotate);
-    get_offsetsHelper(address.zAxis, zAxis_address, default_z, new_z);
-    get_offsetsHelper(address.yTilt, yTilt_address,default_y_tilt, new_y_tilt);
-    get_offsetsHelper(address.y_axis, y_address, default_y, new_y);
+        if(xRotate_address && xRotate_func && zAxis_address && zAxis_func && yTilt_address && yAxis_func && y_address && yAxis1_func)
+        {
+            get_offsetsHelper(address.xRotate, xRotate_address, default_x_rotate, new_x_rotate);
+            get_offsetsHelper(address.zAxis, zAxis_address, default_z, new_z);
+            get_offsetsHelper(address.yTilt, yTilt_address,default_y_tilt, new_y_tilt);
+            get_offsetsHelper(address.y_axis, y_address, default_y, new_y);
+        }
+        delete[] free_xAxis, free_yAxis, free_zAxis, free_yAxisOne;
+    } else
+    {
+        isInitialized = false;
+    }
 }
 
 

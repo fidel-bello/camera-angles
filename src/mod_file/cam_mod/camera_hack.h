@@ -53,7 +53,7 @@ private:
     DWORD processID{};
     HANDLE l_handle{};
     MODULEINFO modInfo{};
-
+    bool isInitialized;
     int set_angle(const camera_struct &angle);
 
     //2k22

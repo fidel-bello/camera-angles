@@ -111,7 +111,7 @@ void camera_hack::nose_bleeds()
 {
     if(isInitialized)
     {
-        camera_struct angle = { 1.75, 1.200000048, 25, 10, -3, 12, 12.5, 700, 700 };
+        camera_struct angle = { 1.75, 1.200000048, 25, 10, 2, 19, 12.5, 700, 700 };
         set_angle(angle);
     }
     else
@@ -137,7 +137,7 @@ void camera_hack::default_cam()
 void camera_hack::ring_side() {
     if(isInitialized)
     {
-        camera_struct angle = { 1.75, 1.001000047, 30, 12, 12, 25, 8, 350, 300};
+        camera_struct angle = { 1.75, 1.001000047, 5, 25, 12, 25, 10, 100, 0};
         set_angle(angle);
     }
     else

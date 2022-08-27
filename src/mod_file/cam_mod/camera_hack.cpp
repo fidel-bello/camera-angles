@@ -166,7 +166,7 @@ std::vector<unsigned int> camera_hack::get_offsetsHelper(std::vector<unsigned in
 
 void camera_hack::nose_bleeds22() {
 
-    if(!isInitialized)
+    if(isInitialized)
     {
         uintptr_t game =(uintptr_t) modInfo.lpBaseOfDll;
         uintptr_t xRotate_address = (uintptr_t)game + 0x036ED358;
@@ -214,18 +214,15 @@ void camera_hack::nose_bleeds22() {
             get_offsetsHelper(address.y_axis, y_address, default_y, new_y);
             delete[] free_yAxisOne, free_yAxis, free_zAxis, free_xAxis;
         }
-
-        isInitialized = true;
     } else
     {
-
         isInitialized = false;
     }
 }
 
 void camera_hack::default_cam22()
 {
-    if(!isInitialized)
+    if(isInitialized)
     {
         uintptr_t game = (uintptr_t)(modInfo.lpBaseOfDll);
 
@@ -256,8 +253,8 @@ void camera_hack::default_cam22()
             delete[] newYOneArray;
 
         }
-        isInitialized = true;
-    } else
+    }
+    else
     {
         isInitialized = false;
     }
@@ -265,7 +262,7 @@ void camera_hack::default_cam22()
 
 void camera_hack::hctp22()
 {
-    if(!isInitialized)
+    if(isInitialized)
     {
         uintptr_t game =(uintptr_t)modInfo.lpBaseOfDll;
         uintptr_t xRotate_address = (uintptr_t)game + 0x036ED358;
@@ -307,7 +304,6 @@ void camera_hack::hctp22()
             WriteProcessMemory(l_handle, (LPVOID)yAxis_func, free_yAxis, size_of_x_function, nullptr);
         }
         delete[] newYOneArray, free_yAxis, free_zAxis, free_xAxis;
-        isInitialized = true;
     } else
     {
         isInitialized = false;
@@ -363,7 +359,8 @@ void camera_hack::ring_side22()
             get_offsetsHelper(address.y_axis, y_address, default_y, new_y);
         }
         delete[] free_xAxis, free_yAxis, free_zAxis, free_yAxisOne;
-    } else
+    }
+    else
     {
         isInitialized = false;
     }

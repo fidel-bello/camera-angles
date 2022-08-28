@@ -56,7 +56,8 @@ int camera_hack::open_process()
     return true;
 }
 
-int camera_hack::get_modules() {
+int camera_hack::get_modules()
+{
     // Get all Modules of a process
     HMODULE hModule[4096];
     DWORD lpcbNeeded;
@@ -134,7 +135,8 @@ void camera_hack::default_cam()
 
 
 }
-void camera_hack::ring_side() {
+void camera_hack::ring_side()
+{
     if(isInitialized)
     {
         camera_struct angle = { 1.75, 1.001000047, 5, 25, 12, 25, 10, 100, 0};
@@ -146,8 +148,8 @@ void camera_hack::ring_side() {
     }
 }
 
-int camera_hack::set_angle(const camera_struct &angle) {
-
+int camera_hack::set_angle(const camera_struct &angle)
+{
     uintptr_t xAxis = (uintptr_t) (modInfo.lpBaseOfDll) + 0x252E190;
     uintptr_t xRotate = (uintptr_t) (modInfo.lpBaseOfDll) + 0x252E158;
     uintptr_t yAll = (uintptr_t) (modInfo.lpBaseOfDll) + 0x14252E1C4;
@@ -194,8 +196,8 @@ std::vector<unsigned int> camera_hack::get_offsetsHelper(std::vector<unsigned in
     return address;
 }
 
-void camera_hack::nose_bleeds22() {
-
+void camera_hack::nose_bleeds22()
+{
     if(isInitialized)
     {
         uintptr_t game =(uintptr_t) modInfo.lpBaseOfDll;
@@ -217,12 +219,13 @@ void camera_hack::nose_bleeds22() {
         float default_x_rotate;
         float default_y_tilt;
         float default_z;
+        float default_y;
 
         float new_x_rotate = 1;
-        float new_y_tilt = -0.200000003;
-        float new_z = 2500;
-        float default_y;
-        float new_y = -300;
+        float new_y_tilt = -0.1199999994;
+        float new_z = 2300;
+        float new_y = -230;
+
 
         char* free_xAxis = dynamic_nop(size_of_x_function, NOP);
         WriteProcessMemory(l_handle, (LPVOID)xRotate_func, free_xAxis, size_of_x_function, nullptr);
@@ -361,10 +364,180 @@ void camera_hack::ring_side22()
         float default_z;
         float default_y;
 
-        float new_x_rotate = 0.8000000119;
+        float new_x_rotate = 2;
         float new_y_tilt = -0.001000000047;
         float new_z = 1500;
         float new_y = -210;
+
+        int size_of_z_function = 6;
+        int size_of_x_function = 8;
+
+        char* free_xAxis = dynamic_nop(size_of_x_function, NOP);
+        WriteProcessMemory(l_handle, (LPVOID)xRotate_func, free_xAxis, size_of_x_function, nullptr);
+
+        char* free_zAxis = dynamic_nop(size_of_z_function, NOP);
+        WriteProcessMemory(l_handle, (LPVOID)zAxis_func, free_zAxis, size_of_z_function, nullptr);
+
+        char* free_yAxis = dynamic_nop(size_of_x_function, NOP);
+        WriteProcessMemory(l_handle, (LPVOID)yAxis_func, free_yAxis, size_of_x_function, nullptr);
+
+        char* free_yAxisOne  = dynamic_nop(size_of_x_function, NOP);
+        WriteProcessMemory(l_handle, (LPVOID)yAxis1_func, free_yAxisOne, size_of_x_function, nullptr);
+
+        if(xRotate_address && xRotate_func && zAxis_address && zAxis_func && yTilt_address && yAxis_func && y_address && yAxis1_func)
+        {
+            get_offsetsHelper(address.xRotate, xRotate_address, default_x_rotate, new_x_rotate);
+            get_offsetsHelper(address.zAxis, zAxis_address, default_z, new_z);
+            get_offsetsHelper(address.yTilt, yTilt_address,default_y_tilt, new_y_tilt);
+            get_offsetsHelper(address.y_axis, y_address, default_y, new_y);
+        }
+        delete[] free_xAxis, free_yAxis, free_zAxis, free_yAxisOne;
+    }
+    else
+    {
+        isInitialized = false;
+    }
+}
+
+void camera_hack::north_medium()
+{
+    if(isInitialized)
+    {
+        uintptr_t game =(uintptr_t) modInfo.lpBaseOfDll;
+        uintptr_t xRotate_address = (uintptr_t)game + 0x036ED358;
+        uintptr_t zAxis_address = (uintptr_t)game + 0x036ED358;
+        uintptr_t yTilt_address = (uintptr_t)game + 0x036ED368;
+        uintptr_t y_address = (uintptr_t) game + 0x036ED368;
+        uintptr_t xRotate_func = game + 0x0793414;
+        uintptr_t zAxis_func = game + 0x07964FE;
+        uintptr_t yAxis_func = game + 0x0793C7A;
+        uintptr_t yAxis1_func = game + 0x07964A0;
+
+        camera_addresses_22 address;
+
+        float default_x_rotate;
+        float default_y_tilt;
+        float default_z;
+        float default_y;
+
+        float new_x_rotate = 1.516670823;
+        float new_y_tilt = 0;
+        float new_z = 1500;
+        float new_y = -134;
+
+        int size_of_z_function = 6;
+        int size_of_x_function = 8;
+
+        char* free_xAxis = dynamic_nop(size_of_x_function, NOP);
+        WriteProcessMemory(l_handle, (LPVOID)xRotate_func, free_xAxis, size_of_x_function, nullptr);
+
+        char* free_zAxis = dynamic_nop(size_of_z_function, NOP);
+        WriteProcessMemory(l_handle, (LPVOID)zAxis_func, free_zAxis, size_of_z_function, nullptr);
+
+        char* free_yAxis = dynamic_nop(size_of_x_function, NOP);
+        WriteProcessMemory(l_handle, (LPVOID)yAxis_func, free_yAxis, size_of_x_function, nullptr);
+
+        char* free_yAxisOne  = dynamic_nop(size_of_x_function, NOP);
+        WriteProcessMemory(l_handle, (LPVOID)yAxis1_func, free_yAxisOne, size_of_x_function, nullptr);
+
+        if(xRotate_address && xRotate_func && zAxis_address && zAxis_func && yTilt_address && yAxis_func && y_address && yAxis1_func)
+        {
+            get_offsetsHelper(address.xRotate, xRotate_address, default_x_rotate, new_x_rotate);
+            get_offsetsHelper(address.zAxis, zAxis_address, default_z, new_z);
+            get_offsetsHelper(address.yTilt, yTilt_address,default_y_tilt, new_y_tilt);
+            get_offsetsHelper(address.y_axis, y_address, default_y, new_y);
+        }
+        delete[] free_xAxis, free_yAxis, free_zAxis, free_yAxisOne;
+    }
+    else
+    {
+        isInitialized = false;
+    }
+}
+
+void camera_hack::north_far()
+{
+    if(isInitialized)
+    {
+        intptr_t game =(uintptr_t) modInfo.lpBaseOfDll;
+        uintptr_t xRotate_address = (uintptr_t)game + 0x036ED358;
+        uintptr_t zAxis_address = (uintptr_t)game + 0x036ED358;
+        uintptr_t yTilt_address = (uintptr_t)game + 0x036ED368;
+        uintptr_t y_address = (uintptr_t) game + 0x036ED368;
+        uintptr_t xRotate_func = game + 0x0793414;
+        uintptr_t zAxis_func = game + 0x07964FE;
+        uintptr_t yAxis_func = game + 0x0793C7A;
+        uintptr_t yAxis1_func = game + 0x07964A0;
+
+
+        camera_addresses_22 address;
+
+        float default_x_rotate;
+        float default_y_tilt;
+        float default_z;
+        float default_y;
+
+        float new_x_rotate = 1.5716670823;
+        float new_y_tilt = 0;
+        float new_z = 2000;
+        float new_y = -134;
+
+        int size_of_z_function = 6;
+        int size_of_x_function = 8;
+
+        char* free_xAxis = dynamic_nop(size_of_x_function, NOP);
+        WriteProcessMemory(l_handle, (LPVOID)xRotate_func, free_xAxis, size_of_x_function, nullptr);
+
+        char* free_zAxis = dynamic_nop(size_of_z_function, NOP);
+        WriteProcessMemory(l_handle, (LPVOID)zAxis_func, free_zAxis, size_of_z_function, nullptr);
+
+        char* free_yAxis = dynamic_nop(size_of_x_function, NOP);
+        WriteProcessMemory(l_handle, (LPVOID)yAxis_func, free_yAxis, size_of_x_function, nullptr);
+
+        char* free_yAxisOne  = dynamic_nop(size_of_x_function, NOP);
+        WriteProcessMemory(l_handle, (LPVOID)yAxis1_func, free_yAxisOne, size_of_x_function, nullptr);
+
+        if(xRotate_address && xRotate_func && zAxis_address && zAxis_func && yTilt_address && yAxis_func && y_address && yAxis1_func)
+        {
+            get_offsetsHelper(address.xRotate, xRotate_address, default_x_rotate, new_x_rotate);
+            get_offsetsHelper(address.zAxis, zAxis_address, default_z, new_z);
+            get_offsetsHelper(address.yTilt, yTilt_address,default_y_tilt, new_y_tilt);
+            get_offsetsHelper(address.y_axis, y_address, default_y, new_y);
+        }
+        delete[] free_xAxis, free_yAxis, free_zAxis, free_yAxisOne;
+    }
+    else
+    {
+        isInitialized = false;
+    }
+}
+
+void camera_hack::north_farther()
+{
+    if(isInitialized)
+    {
+        intptr_t game =(uintptr_t) modInfo.lpBaseOfDll;
+        uintptr_t xRotate_address = (uintptr_t)game + 0x036ED358;
+        uintptr_t zAxis_address = (uintptr_t)game + 0x036ED358;
+        uintptr_t yTilt_address = (uintptr_t)game + 0x036ED368;
+        uintptr_t y_address = (uintptr_t) game + 0x036ED368;
+        uintptr_t xRotate_func = game + 0x0793414;
+        uintptr_t zAxis_func = game + 0x07964FE;
+        uintptr_t yAxis_func = game + 0x0793C7A;
+        uintptr_t yAxis1_func = game + 0x07964A0;
+
+
+        camera_addresses_22 address;
+
+        float default_x_rotate;
+        float default_y_tilt;
+        float default_z;
+        float default_y;
+
+        float new_x_rotate = 1.516670823;
+        float new_y_tilt = -0.10000000015;
+        float new_z = 3000;
+        float new_y = -134;
 
         int size_of_z_function = 6;
         int size_of_x_function = 8;

@@ -5,7 +5,10 @@
 #ifndef NEW_CAMERA_HACK_CONTROLLER_H
 #define NEW_CAMERA_HACK_CONTROLLER_H
 
+#include <conio.h>
+
 #include "../cam_mod/camera_hack.h"
+#include "../constants/constants.h"
 
 class Controller
 {

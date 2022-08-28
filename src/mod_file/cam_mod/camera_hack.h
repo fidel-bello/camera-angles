@@ -77,6 +77,9 @@ public:
     void default_cam22();
     void hctp22();
     void ring_side22();
+    void north_medium();
+    void north_far();
+    void north_farther();
 };
 
 

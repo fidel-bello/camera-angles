@@ -70,13 +70,13 @@ void Controller::cam_options_22()
 {
     int  choice;
 
-    printf("1. HCTP");
-    printf("\n");
-    printf("2. Nose Bleeds");
-    printf("\n");
-    printf("3. Ring Side");
-    printf("\n");
+    printf("1. HCTP\n");
+    printf("2. Nose Bleeds\n");
+    printf("3. Ring Side\n");
     printf("4. Default\n");
+    printf("5. North Medium\n");
+    printf("6. North Far\n");
+    printf("7. North Farther\n");
 
     std::cin >> choice;
 
@@ -92,11 +92,21 @@ void Controller::cam_options_22()
     } else if(choice == 4)
     {
         hack_2->default_cam22();
+    } else if(choice == 5)
+    {
+        hack_2->north_medium();
+    } else if(choice == 6)
+    {
+        hack_2->north_far();
+    } else if(choice == 7)
+    {
+        hack_2->north_farther();
     }
 }
 
 
-void Controller::title_options() {
+void Controller::title_options()
+{
     printf("What Game?\n");
     printf("1. WWE 2K19\n");
     printf("2. WWE 2K22\n");

@@ -31,7 +31,6 @@ int main()
         {
             control->cam_options_22();
         }
-
     }
     return 0;
 }

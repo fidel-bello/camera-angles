@@ -26,9 +26,9 @@
 
   ## Usage
     * 19
-    https://user-images.githubusercontent.com/73322116/185989593-33f6be4d-160d-4f41-b5d5-2f6edd512321.mp4
+https://user-images.githubusercontent.com/73322116/185989593-33f6be4d-160d-4f41-b5d5-2f6edd512321.mp4
     * 22
-    https://user-images.githubusercontent.com/73322116/187087323-fb10df61-b35c-4046-8ba7-cbcddf633021.mp4
+https://user-images.githubusercontent.com/73322116/187087323-fb10df61-b35c-4046-8ba7-cbcddf633021.mp4
   
   ## Development
     * the next plan is to figure out how to sync keys with mod so that user doesnt have to alt + tab out of windows.

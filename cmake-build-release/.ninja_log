@@ -1,9 +1,0 @@
-# ninja log v5
-0	1485	6833342747083773	CMakeFiles/camera_hackcamera_hack.dir/src/main.cpp.obj	949f827552ae9648
-8	1502	6833342747233782	CMakeFiles/camera_hackcamera_hack.dir/src/mod_file/controller/controller.cpp.obj	e19c83987a041142
-4	1692	6833342749171107	CMakeFiles/camera_hackcamera_hack.dir/src/mod_file/cam_mod/camera_hack.cpp.obj	70b57d78520d7f1d
-1693	2041	6833342752601987	camera_hackcamera_hack.exe	f859681df71ca1f3
-3	1376	6833499393141523	CMakeFiles/camera_hackcamera_hack.dir/src/main.cpp.obj	949f827552ae9648
-11	1389	6833499393281542	CMakeFiles/camera_hackcamera_hack.dir/src/mod_file/controller/controller.cpp.obj	e19c83987a041142
-7	1608	6833499395472196	CMakeFiles/camera_hackcamera_hack.dir/src/mod_file/cam_mod/camera_hack.cpp.obj	70b57d78520d7f1d
-1609	1947	6833499398802982	camera_hackcamera_hack.exe	f859681df71ca1f3

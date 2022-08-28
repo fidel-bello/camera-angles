@@ -75,8 +75,6 @@ void Controller::cam_options_22()
     printf("3. Ring Side\n");
     printf("4. Default\n");
     printf("5. North Medium\n");
-    printf("6. North Far\n");
-    printf("7. North Farther\n");
 
     std::cin >> choice;
 
@@ -94,13 +92,7 @@ void Controller::cam_options_22()
         hack_2->default_cam22();
     } else if(choice == 5)
     {
-        hack_2->north_medium();
-    } else if(choice == 6)
-    {
-        hack_2->north_far();
-    } else if(choice == 7)
-    {
-        hack_2->north_farther();
+        hack_2->north_medium22();
     }
 }
 

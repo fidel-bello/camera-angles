@@ -1,14 +1,13 @@
 //
 // Created by fidel on 8/14/2022.
 //
+#include "../cam_mod/camera_hack.h"
 
 /**
- * dynamic_nop(size, val)
- * size == the size of the array, val = NOP or whatever value you want to pass in;
- * will be useful for future functions that have to be nop for the mod to work
- **/
-
-#include "../cam_mod/camera_hack.h"
+ * @param size takes in size of bytes of array
+ * @param val takes in the val of the NOP from constants directory. or 0x90
+ * @returns return an array of NOP in n bytes
+ */
 
 char *dynamic_nop(int size, char val)
 {
@@ -20,7 +19,15 @@ char *dynamic_nop(int size, char val)
     return array;
 }
 
-//create empty arr, insert elements from input array, new-arr = input-arr;
+/**
+ *
+ * @param array takes an array of values from the address
+ * @param size  takes the size of bytes in the array
+ * @param hProc takes in the handle
+ * @param baseAddress takes in the base address
+ * @return returns the original values from the array before being no-oped
+ */
+
 unsigned char* revert_address(unsigned char array[], int size, HANDLE hProc, LPVOID baseAddress)
 {
      unsigned char *newArray = new unsigned char[size];

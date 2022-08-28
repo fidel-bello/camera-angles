@@ -1,10 +1,6 @@
 //
 // Created by fidel on 8/11/2022.
 //
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wconstant-conversion"
-
 #ifndef CAMERA_HACK_H
 #define CAMERA_HACK_H
 
@@ -27,6 +23,12 @@
 
 class camera_hack {
 private:
+    HWND window_name{};
+    DWORD processID{};
+    HANDLE l_handle{};
+    MODULEINFO modInfo{};
+    bool isInitialized;
+
     struct camera_struct
     {
         float x_axis;//default is 1.75 -> 0x252E190
@@ -48,18 +50,28 @@ private:
         std::vector<unsigned int>y_axis = { 0x18, 0x0, 0x28, 0x18, 0x1314 };
     };
 
-
-    HWND window_name{};
-    DWORD processID{};
-    HANDLE l_handle{};
-    MODULEINFO modInfo{};
-    bool isInitialized;
+    /**
+     * 2k19 only
+     * @param angle takes in angles of customized floats from the camera_struct
+     * @return returns the angles value that is not 0
+     */
     int set_angle(const camera_struct &angle);
 
-    //2k22
+    /**
+     * for pointers with offsets
+     * @param address takes in vector of offsets
+     * @param ptr takes in in the pointer address
+     * @param val takes in a float
+     * @param newVal takes in custom float
+     * @return  the lowest offset of the pointer
+     */
     std::vector<unsigned int> get_offsetsHelper(std::vector<unsigned int> address, uintptr_t ptr, float val, float newVal);
 
 public:
+    /**
+     * constructor for class
+     * @param window_handle takes in the name of window
+     */
     explicit camera_hack(const char *window_handle);
     ~camera_hack();
     bool findProcessID();
@@ -77,12 +89,8 @@ public:
     void default_cam22();
     void hctp22();
     void ring_side22();
-    void north_medium();
-    void north_far();
-    void north_farther();
+    void north_medium22();
 };
 
 
 #endif //CAMERA_HACK_H
-
-#pragma clang diagnostic pop

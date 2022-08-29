@@ -16,6 +16,7 @@ char *dynamic_nop(int size, char val)
     }
     return array;
 }
+
 /**
  *
  * @param array takes an array of values from the address

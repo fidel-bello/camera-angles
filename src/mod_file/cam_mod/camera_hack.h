@@ -44,7 +44,7 @@ private:
 
     struct camera_addresses_22
     {
-        std::vector<unsigned int> xRotate = {0x20, 0x38, 0x30, 0x18, 0x158 };
+        std::vector<unsigned int> xRotate = { 0x20, 0x38, 0x30, 0x18, 0x158 };
         std::vector<unsigned int> yTilt = { 0x18, 0x0, 0x28, 0x18, 0x164 };
         std::vector<unsigned int> zAxis = { 0x20, 0x28, 0x28, 0x18, 0x178 };
         std::vector<unsigned int>y_axis = { 0x18, 0x0, 0x28, 0x18, 0x1314 };
@@ -61,11 +61,11 @@ private:
      * for pointers with offsets
      * @param address takes in vector of offsets
      * @param ptr takes in in the pointer address
-     * @param val takes in a float
      * @param newVal takes in custom float
      * @return  the lowest offset of the pointer
      */
-    std::vector<unsigned int> get_offsetsHelper(std::vector<unsigned int> address, uintptr_t ptr, float val, float newVal);
+
+    std::vector<unsigned int> get_offsetsHelper(std::vector<unsigned int> address, uintptr_t ptr, float newVal);
 
 public:
     /**

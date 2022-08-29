@@ -7,7 +7,6 @@
  * @param val takes in the val of the NOP from constants directory. or 0x90
  * @returns return an array of NOP in n bytes
  */
-
 char *dynamic_nop(int size, char val)
 {
     char* array = new char[size];
@@ -17,7 +16,6 @@ char *dynamic_nop(int size, char val)
     }
     return array;
 }
-
 /**
  *
  * @param array takes an array of values from the address
@@ -26,14 +24,12 @@ char *dynamic_nop(int size, char val)
  * @param baseAddress takes in the base address
  * @return returns the original values from the array before being no-oped
  */
-
-unsigned char* revert_address(unsigned char array[], int size, HANDLE hProc, LPVOID baseAddress)
+unsigned char* revert_address(unsigned char array[], int size)
 {
      unsigned char *newArray = new unsigned char[size];
     for(int i = 0; i < size; i++)
     {
         newArray[i] = array[i];
-        WriteProcessMemory(hProc, baseAddress, newArray, size, nullptr);
     }
     return newArray;
 }

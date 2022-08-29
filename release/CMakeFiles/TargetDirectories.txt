@@ -1,3 +1,0 @@
-C:/Users/fidel/Desktop/github_projects/camera_angles_mod/release/CMakeFiles/camera_hackcamera_hack.dir
-C:/Users/fidel/Desktop/github_projects/camera_angles_mod/release/CMakeFiles/edit_cache.dir
-C:/Users/fidel/Desktop/github_projects/camera_angles_mod/release/CMakeFiles/rebuild_cache.dir

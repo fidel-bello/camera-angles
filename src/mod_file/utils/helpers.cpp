@@ -16,12 +16,11 @@ char *dynamic_nop(int size, char val)
     }
     return array;
 }
+
 /**
  *
  * @param array takes an array of values from the address
  * @param size  takes the size of bytes in the array
- * @param hProc takes in the handle
- * @param baseAddress takes in the base address
  * @return returns the original values from the array before being no-oped
  */
 unsigned char* revert_address(unsigned char array[], int size)

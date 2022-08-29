@@ -90,6 +90,13 @@ public:
     void hctp22();
     void ring_side22();
     void north_medium22();
+    void north_tv22();
+    void east_tv22();
+    void south_tv22();
+    void west_tv22();
+    void k_1922();
+
+
 };
 
 

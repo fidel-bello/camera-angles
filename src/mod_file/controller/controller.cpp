@@ -12,6 +12,13 @@ bool Controller::running() { return isRunning;}
 
 void Controller::init()
 {
+    printf("1. HCTP");
+    printf("\n");
+    printf("2. Nose Bleeds");
+    printf("\n");
+    printf("3. Ring Side");
+    printf("\n");
+    printf("4. Default\n");
 
     if(hack->findProcessID()!= 0)
     {
@@ -25,6 +32,11 @@ void Controller::init()
 
 void Controller::init_22()
 {
+    printf("1. HCTP\n");
+    printf("2. Nose Bleeds\n");
+    printf("3. Ring Side\n");
+    printf("4. Default\n");
+    printf("5. North Medium\n");
 
     if(hack_2->findProcessID() != 0)
     {
@@ -40,14 +52,6 @@ void Controller::init_22()
 void Controller::cam_options_19()
 {
     int choice;
-
-    printf("1. HCTP");
-    printf("\n");
-    printf("2. Nose Bleeds");
-    printf("\n");
-    printf("3. Ring Side");
-    printf("\n");
-    printf("4. Default\n");
 
     std::cin >> choice;
 
@@ -69,12 +73,6 @@ void Controller::cam_options_19()
 void Controller::cam_options_22()
 {
     int  choice;
-
-    printf("1. HCTP\n");
-    printf("2. Nose Bleeds\n");
-    printf("3. Ring Side\n");
-    printf("4. Default\n");
-    printf("5. North Medium\n");
 
     std::cin >> choice;
 

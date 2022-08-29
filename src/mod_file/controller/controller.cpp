@@ -37,6 +37,11 @@ void Controller::init_22()
     printf("3. Ring Side\n");
     printf("4. Default\n");
     printf("5. North Medium\n");
+    printf("6. North TV\n");
+    printf("7. East TV\n");
+    printf("8. West TV\n");
+    printf("9. South TV\n");
+    printf("10. 2K19(close) \n");
 
     if(hack_2->findProcessID() != 0)
     {
@@ -91,6 +96,21 @@ void Controller::cam_options_22()
     } else if(choice == 5)
     {
         hack_2->north_medium22();
+    } else if(choice == 6)
+    {
+        hack_2->north_tv22();
+    } else if(choice == 7)
+    {
+        hack_2->east_tv22();
+    } else if(choice == 8)
+    {
+        hack_2->west_tv22();
+    } else if(choice == 9)
+    {
+        hack_2->south_tv22();
+    } else if(choice == 10)
+    {
+        hack_2->k_1922();
     }
 }
 

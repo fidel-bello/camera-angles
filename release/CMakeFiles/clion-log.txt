@@ -1,4 +1,4 @@
-"C:\Program Files\JetBrains\CLion 2022.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Release -G "CodeBlocks - MinGW Makefiles" -S C:\Users\fidel\Desktop\github_projects\camera_angles_mod -B C:\Users\fidel\Desktop\github_projects\camera_angles_mod\release
+"C:\Program Files\JetBrains\CLion 2022.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" -S C:\Users\fidel\Desktop\github_projects\camera_angles_mod -B C:\Users\fidel\Desktop\github_projects\camera_angles_mod\release
 -- Configuring done
 -- Generating done
 -- Build files have been written to: C:/Users/fidel/Desktop/github_projects/camera_angles_mod/release

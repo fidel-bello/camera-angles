@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = 
 
-CXX_FLAGS =  -static-libstdc++ -static-libgcc -O3 -DNDEBUG -std=gnu++14
+CXX_FLAGS =  -static-libstdc++ -static-libgcc -g -std=gnu++14
 

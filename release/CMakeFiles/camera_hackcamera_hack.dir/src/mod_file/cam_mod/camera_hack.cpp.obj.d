@@ -369,5 +369,4 @@ CMakeFiles/camera_hackcamera_hack.dir/src/mod_file/cam_mod/camera_hack.cpp.obj: 
  C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/utility \
  C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_relops.h \
  C:/Users/fidel/Desktop/github_projects/camera_angles_mod/src/mod_file/utils/helpers.cpp \
- C:/Users/fidel/Desktop/github_projects/camera_angles_mod/src/mod_file/cam_mod/camera_hack.h \
  C:/Users/fidel/Desktop/github_projects/camera_angles_mod/src/mod_file/constants/constants.h

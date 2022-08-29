@@ -6,7 +6,7 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-Release-d0094a50bb2071803777.json",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.13"
@@ -19,7 +19,7 @@
 					]
 				}
 			],
-			"name" : "Release",
+			"name" : "Debug",
 			"projects" : 
 			[
 				{
@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "camera_hackcamera_hack::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-camera_hackcamera_hack-Release-b99fb6226c75ab7e2e82.json",
+					"jsonFile" : "target-camera_hackcamera_hack-Debug-0326f1b5e38e2cb139a6.json",
 					"name" : "camera_hackcamera_hack",
 					"projectIndex" : 0
 				}

@@ -745,7 +745,6 @@ CMakeFiles/camera_hackcamera_hack.dir/src/mod_file/cam_mod/camera_hack.cpp.obj: 
   C:/Program\ Files/JetBrains/CLion\ 2022.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/utility \
   C:/Program\ Files/JetBrains/CLion\ 2022.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_relops.h \
   ../src/mod_file/utils/helpers.cpp \
-  ../src/mod_file/cam_mod/camera_hack.h \
   ../src/mod_file/constants/constants.h
 
 CMakeFiles/camera_hackcamera_hack.dir/src/mod_file/controller/controller.cpp.obj: ../src/mod_file/controller/controller.cpp \

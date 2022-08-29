@@ -1,7 +1,6 @@
 //
 // Created by fidel on 8/14/2022.
 //
-#include "../cam_mod/camera_hack.h"
 
 /**
  * @param size takes in size of bytes of array

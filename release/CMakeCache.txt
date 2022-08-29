@@ -22,7 +22,7 @@ CMAKE_AR:FILEPATH=C:/Program Files/JetBrains/CLion 2022.2/bin/mingw/bin/ar.exe
 
 //Choose the type of build, options are: None Debug Release RelWithDebInfo
 // MinSizeRel ...
-CMAKE_BUILD_TYPE:STRING=Release
+CMAKE_BUILD_TYPE:STRING=Debug
 
 //Id string of the compiler for the CodeBlocks IDE. Automatically
 // detected when left empty

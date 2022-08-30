@@ -14,7 +14,7 @@ class Controller
 {
 private:
     bool isRunning;
-
+    void processExit();
     camera_hack *hack = new camera_hack("WWE 2K19");
     camera_hack *hack_2 = new camera_hack("WWE 2K22");
 
@@ -27,6 +27,7 @@ public:
     void cam_options_19();
     void cam_options_22();
     bool running();
+    void ClearScreen();
 };
 
 #endif //NEW_CAMERA_HACK_CONTROLLER_H

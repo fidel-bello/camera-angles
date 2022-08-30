@@ -6,12 +6,13 @@
 Controller *control = nullptr;
 int choice;
 
+
+
+
 int main()
 {
     control = new Controller();
-
     control->title_options();
-
     std::cin >> choice;
 
     if(choice == 1)
@@ -31,6 +32,8 @@ int main()
         {
             control->cam_options_22();
         }
+
     }
     return 0;
 }
+

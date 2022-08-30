@@ -50,6 +50,35 @@ private:
         std::vector<unsigned int>y_axis = { 0x18, 0x0, 0x28, 0x18, 0x1314 };
     };
 
+    struct camera_struct_22
+    {
+        float new_x_rotate;
+        float new_y_tilt;
+        float new_z;
+        float new_y;
+    };
+
+    struct camera_struct_noY
+    {
+        float new_x_rotate;
+        float new_y_tilt;
+        float new_z;
+    };
+
+    /**
+     * @param angle takes in angle from camera_struct_22
+     * sets angle with a static feel. the camera will disable movement from y axis and just stays
+     */
+    void set_angle_no_follow(const camera_struct_22 &angle);
+
+    /**
+     *
+     * @param angle takes in angle from camera_struct_noY
+     * Does not take in y axis values
+     * camera will not be static from the y axis and follow the player
+     */
+    void set_angle_follow(const camera_struct_noY &angle);
+
     /**
      * 2k19 only
      * @param angle takes in angles of customized floats from the camera_struct
@@ -95,7 +124,6 @@ public:
     void south_tv22();
     void west_tv22();
     void k_1922();
-
 
 };
 

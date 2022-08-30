@@ -8,10 +8,8 @@
 #include <windows.h>
 #include <winuser.h>
 #include <psapi.h>
-#include <ostream>
 #include <iostream>
 #include <vector>
-#include <array>
 
 
 /*
@@ -103,6 +101,7 @@ public:
      */
     explicit camera_hack(const char *window_handle);
     ~camera_hack();
+
     bool findProcessID();
     int open_process();
     int get_modules();

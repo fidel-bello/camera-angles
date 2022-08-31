@@ -35,13 +35,13 @@ void Controller::init_22()
     printf("1. HCTP\n");
     printf("2. Nose Bleeds\n");
     printf("3. Ring Side\n");
-    printf("4. Default\n");
-    printf("5. North Medium\n");
-    printf("6. North TV\n");
-    printf("7. East TV\n");
-    printf("8. West TV\n");
-    printf("9. South TV\n");
-    printf("10. 2K19(close) \n");
+    printf("4. North Medium\n");
+    printf("5. North TV\n");
+    printf("6. East TV\n");
+    printf("7. West TV\n");
+    printf("8. South TV\n");
+    printf("9. Default\n");
+    printf("10. Exit \n");
 
     if(hack_2->findProcessID() != 0)
     {
@@ -57,7 +57,6 @@ void Controller::init_22()
 void Controller::cam_options_19()
 {
     int choice;
-
     std::cin >> choice;
 
     if(choice == 1)
@@ -92,26 +91,28 @@ void Controller::cam_options_22()
         hack_2->ring_side22();
     } else if(choice == 4)
     {
-        hack_2->default_cam22();
+        hack_2->north_medium22();
     } else if(choice == 5)
     {
-        hack_2->north_medium22();
+        hack_2->north_tv22();
     } else if(choice == 6)
     {
-        hack_2->north_tv22();
+        hack_2->east_tv22();
     } else if(choice == 7)
     {
-        hack_2->east_tv22();
+        hack_2->west_tv22();
     } else if(choice == 8)
     {
-        hack_2->west_tv22();
+        hack_2->south_tv22();
     } else if(choice == 9)
     {
-        hack_2->south_tv22();
+        hack_2->default_cam22();
     } else if(choice == 10)
     {
-        hack_2->k_1922();
+       processExit();
     }
+
+    ClearScreen();
 }
 
 
@@ -122,3 +123,14 @@ void Controller::title_options()
     printf("2. WWE 2K22\n");
 }
 
+
+void Controller::ClearScreen()
+{
+    COORD cursorPosition;	    cursorPosition.X = 0;	cursorPosition.Y = 14;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), cursorPosition);
+}
+
+void Controller::processExit()
+{
+    exit(1);
+}

@@ -181,7 +181,7 @@ void camera_hack::nose_bleeds22() {
 
     if(isInitialized)
     {
-        camera_struct_22 angle = { 1,  -0.120000003, 2500, -300 };
+        camera_struct_22 angle = { 1.2,  -0.23, 3200, -220 };
         set_angle_no_follow(angle);
         isInitialized = true;
     } else

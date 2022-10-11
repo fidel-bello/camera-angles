@@ -181,7 +181,7 @@ void camera_hack::nose_bleeds22() {
 
     if(isInitialized)
     {
-        camera_struct_22 angle = { 1,  -0.120000003, 2500, -300 };
+        camera_struct_22 angle = { 1.2,  -0.23, 3200, -220 };
         set_angle_no_follow(angle);
         isInitialized = true;
     } else
@@ -197,10 +197,10 @@ void camera_hack::default_cam22()
     {
         uintptr_t game = (uintptr_t)(modInfo.lpBaseOfDll);
 
-        uintptr_t xRotate_func = game + 0x0793414;
-        uintptr_t zAxis_func = game + 0x07964FE;
-        uintptr_t yAxis_func = game + 0x0793C7A;
-        uintptr_t yAxis1_func = game + 0x07964A0;
+        uintptr_t xRotate_func = game + 0x0793144;
+        uintptr_t zAxis_func = game + 0x079622E;
+        uintptr_t yAxis_func = game + 0x07939AA;
+        uintptr_t yAxis1_func = game + 0x07961D0;
 
         unsigned char xRotateArray[] =  {X_ROTATE_FUNC };
         unsigned char zArray[] = { Z_FUNC };
@@ -330,6 +330,7 @@ void camera_hack::south_tv22()
 
 }
 
+/*
 void camera_hack::k_1922()
 {
     if(isInitialized)
@@ -343,6 +344,8 @@ void camera_hack::k_1922()
         isInitialized = false;
     }
 }
+ */
+
 
 void camera_hack::set_angle_no_follow(const camera_hack::camera_struct_22 &angle)
 {
@@ -352,10 +355,10 @@ void camera_hack::set_angle_no_follow(const camera_hack::camera_struct_22 &angle
     uintptr_t yTilt_address = (uintptr_t)game + 0x036ED368;
     uintptr_t y_address = (uintptr_t) game + 0x036ED368;
 
-    uintptr_t xRotate_func = game + 0x0793414;
-    uintptr_t zAxis_func = game + 0x07964FE;
-    uintptr_t yAxis_func = game + 0x0793C7A;
-    uintptr_t yAxis1_func = game + 0x7964A0;
+    uintptr_t xRotate_func = game + 0x0793144;
+    uintptr_t zAxis_func = game + 0x079622E;
+    uintptr_t yAxis_func = game + 0x07939AA;
+    uintptr_t yAxis1_func = game + 0x07961D0;
 
     int size_of_z_function = 6;
     int size_of_x_function = 8;
@@ -390,10 +393,11 @@ void camera_hack::set_angle_follow(const camera_hack::camera_struct_noY &angle)
     uintptr_t xRotate_address = (uintptr_t)game + 0x036ED358;
     uintptr_t zAxis_address = (uintptr_t)game + 0x036ED358;
     uintptr_t yTilt_address = (uintptr_t)game + 0x036ED368;
-    uintptr_t xRotate_func = game + 0x0793414;
-    uintptr_t zAxis_func = game + 0x07964FE;
-    uintptr_t yAxis_func = game + 0x0793C7A;
-    uintptr_t yAxis1_func = game + 0x07964A0;
+
+    uintptr_t xRotate_func = game + 0x0793144;
+    uintptr_t zAxis_func = game + 0x079622E;
+    uintptr_t yAxis_func = game + 0x07939AA;
+    uintptr_t yAxis1_func = game + 0x07961D0;
 
     camera_addresses_22 address;
 

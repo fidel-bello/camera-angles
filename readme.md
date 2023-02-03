@@ -8,7 +8,7 @@
 
 
 ## Description
-  * This mod is an external dll injector written in c++
+  * This mod is an external injector written in c++
   * for educational purposes
   * the cheat engine table basically has the memory address for the functions and pointers
   * found these addresses via trial and error(not hard to do but very time consuming. many tutorials on youtube)

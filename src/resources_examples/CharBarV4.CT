@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>6</ID>
+      <Description>"Disable z-axis"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : WWE 2K22
+  Version: 
+  Date   : 2023-02-12
+  Author : fidel
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECT,WWE2K22_x64.exe,89 87 18 03 00 00 41 B0 01 48 8D 97 A0 14 00 00 48 8B CF E8 3A) // should be unique
+alloc(newmem,$1000,INJECT)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  jmp return
+
+INJECT:
+  jmp newmem
+  nop
+return:
+registersymbol(INJECT)
+
+[DISABLE]
+
+INJECT:
+  db 89 87 18 03 00 00
+
+unregistersymbol(INJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: WWE2K22_x64.exe+796F0E
+
+WWE2K22_x64.exe+796EDE: 7F 15                    - jg WWE2K22_x64.exe+796EF5
+WWE2K22_x64.exe+796EE0: 38 9F 9D 14 00 00        - cmp [rdi+0000149D],bl
+WWE2K22_x64.exe+796EE6: 75 0D                    - jne WWE2K22_x64.exe+796EF5
+WWE2K22_x64.exe+796EE8: 83 BF 48 17 00 00 00     - cmp dword ptr [rdi+00001748],00
+WWE2K22_x64.exe+796EEF: 0F 84 6A 01 00 00        - je WWE2K22_x64.exe+79705F
+WWE2K22_x64.exe+796EF5: 48 8B 07                 - mov rax,[rdi]
+WWE2K22_x64.exe+796EF8: 48 8D 97 A0 14 00 00     - lea rdx,[rdi+000014A0]
+WWE2K22_x64.exe+796EFF: 48 8B CF                 - mov rcx,rdi
+WWE2K22_x64.exe+796F02: FF 90 A0 00 00 00        - call qword ptr [rax+000000A0]
+WWE2K22_x64.exe+796F08: 8B 87 1C 03 00 00        - mov eax,[rdi+0000031C]
+// ---------- INJECTING HERE ----------
+WWE2K22_x64.exe+796F0E: 89 87 18 03 00 00        - mov [rdi+00000318],eax
+// ---------- DONE INJECTING  ----------
+WWE2K22_x64.exe+796F14: 41 B0 01                 - mov r8b,01
+WWE2K22_x64.exe+796F17: 48 8D 97 A0 14 00 00     - lea rdx,[rdi+000014A0]
+WWE2K22_x64.exe+796F1E: 48 8B CF                 - mov rcx,rdi
+WWE2K22_x64.exe+796F21: E8 3A D8 FF FF           - call WWE2K22_x64.exe+794760
+WWE2K22_x64.exe+796F26: 48 8B CF                 - mov rcx,rdi
+WWE2K22_x64.exe+796F29: E8 42 DE FF FF           - call WWE2K22_x64.exe+794D70
+WWE2K22_x64.exe+796F2E: E9 2C 01 00 00           - jmp WWE2K22_x64.exe+79705F
+WWE2K22_x64.exe+796F33: C5 FA 10 B7 90 00 00 00  - vmovss xmm6,[rdi+00000090]
+WWE2K22_x64.exe+796F3B: C5 F8 10 05 ED EA 46 02  - vmovups xmm0,[WWE2K22_x64.exe+2C05A30]
+WWE2K22_x64.exe+796F43: C5 F8 11 45 D0           - vmovups [rbp-30],xmm0
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>19</ID>
+      <Description>"Disable y-tilt"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : WWE 2K22
+  Version: 
+  Date   : 2023-02-12
+  Author : fidel
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECT,WWE2K22_x64.exe,C5 FA 11 83 04 03 00 00 * * * * 00) // should be unique
+alloc(newmem,$1000,INJECT)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  jmp return
+
+INJECT:
+  jmp newmem
+  nop 3
+return:
+registersymbol(INJECT)
+
+[DISABLE]
+
+INJECT:
+  db C5 FA 11 83 04 03 00 00
+
+unregistersymbol(INJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: WWE2K22_x64.exe+79468A
+
+WWE2K22_x64.exe+794655: C5 AA C2 CA 01           - vcmpltss xmm1,xmm10,xmm2
+WWE2K22_x64.exe+79465A: C4 E3 79 4A C2 10        - vblendvps xmm0,xmm0,xmm2,xmm1
+WWE2K22_x64.exe+794660: C4 C1 7A 59 C9           - vmulss xmm1,xmm0,xmm9
+WWE2K22_x64.exe+794665: C5 FA 10 83 00 03 00 00  - vmovss xmm0,[rbx+00000300]
+WWE2K22_x64.exe+79466D: C5 F8 2F 83 04 03 00 00  - vcomiss xmm0,[rbx+00000304]
+WWE2K22_x64.exe+794675: 76 06                    - jna WWE2K22_x64.exe+79467D
+WWE2K22_x64.exe+794677: C5 F8 28 C1              - vmovaps xmm0,xmm1
+WWE2K22_x64.exe+79467B: EB 05                    - jmp WWE2K22_x64.exe+794682
+WWE2K22_x64.exe+79467D: C4 C1 70 57 C7           - vxorps xmm0,xmm1,xmm15
+WWE2K22_x64.exe+794682: C5 FA 58 83 04 03 00 00  - vaddss xmm0,xmm0,[rbx+00000304]
+// ---------- INJECTING HERE ----------
+WWE2K22_x64.exe+79468A: C5 FA 11 83 04 03 00 00  - vmovss [rbx+00000304],xmm0
+// ---------- DONE INJECTING  ----------
+WWE2K22_x64.exe+794692: C5 FA 5C 83 00 03 00 00  - vsubss xmm0,xmm0,[rbx+00000300]
+WWE2K22_x64.exe+79469A: C5 FA 11 44 24 20        - vmovss [rsp+20],xmm0
+WWE2K22_x64.exe+7946A0: 81 64 24 20 FF FF FF 7F  - and [rsp+20],7FFFFFFF
+WWE2K22_x64.exe+7946A8: C5 F8 2F 4C 24 20        - vcomiss xmm1,[rsp+20]
+WWE2K22_x64.exe+7946AE: 76 0C                    - jna WWE2K22_x64.exe+7946BC
+WWE2K22_x64.exe+7946B0: 8B 83 00 03 00 00        - mov eax,[rbx+00000300]
+WWE2K22_x64.exe+7946B6: 89 83 04 03 00 00        - mov [rbx+00000304],eax
+WWE2K22_x64.exe+7946BC: 4C 8D 9C 24 D0 00 00 00  - lea r11,[rsp+000000D0]
+WWE2K22_x64.exe+7946C4: 49 8B 5B 38              - mov rbx,[r11+38]
+WWE2K22_x64.exe+7946C8: 49 8B 6B 40              - mov rbp,[r11+40]
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"Disable x-rotate"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : WWE2K22_x64.exe
+  Version:
+  Date   : 2022-08-24
+  Author : fidel
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECT,WWE2K22_x64.exe,C5 FA 11 83 F8 02 00 00 * * * * F4) // should be unique
+alloc(newmem,$1000,INJECT)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  jmp return
+
+INJECT:
+  jmp newmem
+  nop 3
+return:
+registersymbol(INJECT)
+
+[DISABLE]
+
+INJECT:
+  db C5 FA 11 83 F8 02 00 00
+
+unregistersymbol(INJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: 7FF7D6303414
+
+7FF7D63033E8: 33 C0                    - xor eax,eax
+7FF7D63033EA: C5 FA 10 83 F4 02 00 00  - vmovss xmm0,[rbx+000002F4]
+7FF7D63033F2: C5 F8 2F 83 F8 02 00 00  - vcomiss xmm0,[rbx+000002F8]
+7FF7D63033FA: 0F 97 C0                 - seta al
+7FF7D63033FD: 85 C0                    - test eax,eax
+7FF7D63033FF: 74 06                    - je 7FF7D6303407
+7FF7D6303401: C5 F8 28 C1              - vmovaps xmm0,xmm1
+7FF7D6303405: EB 05                    - jmp 7FF7D630340C
+7FF7D6303407: C4 C1 70 57 C7           - vxorps xmm0,xmm1,xmm15
+7FF7D630340C: C5 FA 58 83 F8 02 00 00  - vaddss xmm0,xmm0,[rbx+000002F8]
+// ---------- INJECTING HERE ----------
+7FF7D6303414: C5 FA 11 83 F8 02 00 00  - vmovss [rbx+000002F8],xmm0
+// ---------- DONE INJECTING  ----------
+7FF7D630341C: C5 FA 5C 83 F4 02 00 00  - vsubss xmm0,xmm0,[rbx+000002F4]
+7FF7D6303424: C5 FA 11 44 24 20        - vmovss [rsp+20],xmm0
+7FF7D630342A: 81 64 24 20 FF FF FF 7F  - and [rsp+20],7FFFFFFF
+7FF7D6303432: C5 F8 2F 4C 24 20        - vcomiss xmm1,[rsp+20]
+7FF7D6303438: 76 0C                    - jna 7FF7D6303446
+7FF7D630343A: 8B 83 F4 02 00 00        - mov eax,[rbx+000002F4]
+7FF7D6303440: 89 83 F8 02 00 00        - mov [rbx+000002F8],eax
+7FF7D6303446: C5 FA 10 35 06 D3 91 03  - vmovss xmm6,[7FF7D9C20754]
+7FF7D630344E: C5 FA 11 B3 00 03 00 00  - vmovss [rbx+00000300],xmm6
+7FF7D6303456: 8B 0D 14 90 0C 03        - mov ecx,[7FF7D93CC470]
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"x rotate"</Description>
+      <VariableType>Float</VariableType>
+      <Address>"WWE2K22_x64.exe"+036DED78</Address>
+      <Offsets>
+        <Offset>2F8</Offset>
+        <Offset>370</Offset>
+        <Offset>48</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>7</ID>
+      <Description>"z-axis"</Description>
+      <VariableType>Float</VariableType>
+      <Address>"WWE2K22_x64.exe"+036E8D90</Address>
+      <Offsets>
+        <Offset>318</Offset>
+        <Offset>370</Offset>
+        <Offset>A0</Offset>
+        <Offset>8</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>20</ID>
+      <Description>"y-tilt"</Description>
+      <VariableType>Float</VariableType>
+      <Address>"WWE2K22_x64.exe"+036E42E0</Address>
+      <Offsets>
+        <Offset>304</Offset>
+        <Offset>370</Offset>
+        <Offset>A8</Offset>
+      </Offsets>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Change of vmovss [rbx+000002F8],xmm0</Description>
+      <AddressString>WWE2K22_x64.exe+793E24</AddressString>
+      <Before>
+        <Byte>83</Byte>
+        <Byte>F8</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>C5</Byte>
+        <Byte>FA</Byte>
+        <Byte>11</Byte>
+        <Byte>83</Byte>
+        <Byte>F8</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>C5</Byte>
+        <Byte>FA</Byte>
+        <Byte>5C</Byte>
+        <Byte>83</Byte>
+        <Byte>F4</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of vmovss xmm0,[rbx+000002F8]</Description>
+      <AddressString>WWE2K22_x64.exe+793D9D</AddressString>
+      <Before>
+        <Byte>93</Byte>
+        <Byte>F4</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>C5</Byte>
+        <Byte>FA</Byte>
+        <Byte>10</Byte>
+        <Byte>83</Byte>
+        <Byte>F8</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>C5</Byte>
+        <Byte>7A</Byte>
+        <Byte>10</Byte>
+        <Byte>3D</Byte>
+        <Byte>43</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of vmovups [rbx+000002E0],xmm2</Description>
+      <AddressString>WWE2K22_x64.exe+7948EE</AddressString>
+      <Before>
+        <Byte>E3</Byte>
+        <Byte>69</Byte>
+        <Byte>21</Byte>
+        <Byte>D0</Byte>
+        <Byte>20</Byte>
+      </Before>
+      <Actual>
+        <Byte>C5</Byte>
+        <Byte>F8</Byte>
+        <Byte>11</Byte>
+        <Byte>93</Byte>
+        <Byte>E0</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>4C</Byte>
+        <Byte>8B</Byte>
+        <Byte>C1</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of mov [rdi+00000318],eax</Description>
+      <AddressString>WWE2K22_x64.exe+796F0E</AddressString>
+      <Before>
+        <Byte>87</Byte>
+        <Byte>1C</Byte>
+        <Byte>03</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>87</Byte>
+        <Byte>18</Byte>
+        <Byte>03</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>41</Byte>
+        <Byte>B0</Byte>
+        <Byte>01</Byte>
+        <Byte>48</Byte>
+        <Byte>8D</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of vmovups [rbx+000002D0],xmm0</Description>
+      <AddressString>WWE2K22_x64.exe+7947FD</AddressString>
+      <Before>
+        <Byte>B9</Byte>
+        <Byte>04</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>C5</Byte>
+        <Byte>F8</Byte>
+        <Byte>11</Byte>
+        <Byte>83</Byte>
+        <Byte>D0</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>C2</Byte>
+        <Byte>44</Byte>
+        <Byte>8B</Byte>
+        <Byte>C1</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of vmovups [rbx+000002D0],xmm3</Description>
+      <AddressString>WWE2K22_x64.exe+7948A1</AddressString>
+      <Before>
+        <Byte>C2</Byte>
+        <Byte>C5</Byte>
+        <Byte>D0</Byte>
+        <Byte>58</Byte>
+        <Byte>D8</Byte>
+      </Before>
+      <Actual>
+        <Byte>C5</Byte>
+        <Byte>F8</Byte>
+        <Byte>11</Byte>
+        <Byte>9B</Byte>
+        <Byte>D0</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>C4</Byte>
+        <Byte>C1</Byte>
+        <Byte>78</Byte>
+        <Byte>28</Byte>
+        <Byte>C8</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of vmovups [rbx+000002D0],xmm3</Description>
+      <AddressString>WWE2K22_x64.exe+794D26</AddressString>
+      <Before>
+        <Byte>C4</Byte>
+        <Byte>C1</Byte>
+        <Byte>68</Byte>
+        <Byte>58</Byte>
+        <Byte>DB</Byte>
+      </Before>
+      <Actual>
+        <Byte>C5</Byte>
+        <Byte>F8</Byte>
+        <Byte>11</Byte>
+        <Byte>9B</Byte>
+        <Byte>D0</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>8C</Byte>
+        <Byte>24</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of vcomiss xmm0,[rbx+00000304]</Description>
+      <AddressString>WWE2K22_x64.exe+79466D</AddressString>
+      <Before>
+        <Byte>83</Byte>
+        <Byte>00</Byte>
+        <Byte>03</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>C5</Byte>
+        <Byte>F8</Byte>
+        <Byte>2F</Byte>
+        <Byte>83</Byte>
+        <Byte>04</Byte>
+        <Byte>03</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>76</Byte>
+        <Byte>06</Byte>
+        <Byte>C5</Byte>
+        <Byte>F8</Byte>
+        <Byte>28</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of mov [rbx+00000304],eax</Description>
+      <AddressString>WWE2K22_x64.exe+7946B6</AddressString>
+      <Before>
+        <Byte>83</Byte>
+        <Byte>00</Byte>
+        <Byte>03</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>83</Byte>
+        <Byte>04</Byte>
+        <Byte>03</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>4C</Byte>
+        <Byte>8D</Byte>
+        <Byte>9C</Byte>
+        <Byte>24</Byte>
+        <Byte>D0</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of vmovss [rbx+00000304],xmm0</Description>
+      <AddressString>WWE2K22_x64.exe+79468A</AddressString>
+      <Before>
+        <Byte>83</Byte>
+        <Byte>04</Byte>
+        <Byte>03</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>C5</Byte>
+        <Byte>FA</Byte>
+        <Byte>11</Byte>
+        <Byte>83</Byte>
+        <Byte>04</Byte>
+        <Byte>03</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>C5</Byte>
+        <Byte>FA</Byte>
+        <Byte>5C</Byte>
+        <Byte>83</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>

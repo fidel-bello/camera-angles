@@ -34,14 +34,8 @@ void Controller::init_22()
 {
     printf("1. HCTP\n");
     printf("2. Nose Bleeds\n");
-    printf("3. Ring Side\n");
-    printf("4. North Medium\n");
-    printf("5. North TV\n");
-    printf("6. East TV\n");
-    printf("7. West TV\n");
-    printf("8. South TV\n");
-    printf("9. Default\n");
-    printf("10. Exit \n");
+    printf("3. Default\n");
+    printf("4. Exit \n");
 
     if(hack_2->findProcessID() != 0)
     {
@@ -88,30 +82,11 @@ void Controller::cam_options_22()
         hack_2->nose_bleeds22();
     } else if(choice == 3)
     {
-        hack_2->ring_side22();
+        hack_2->default_cam22();
     } else if(choice == 4)
     {
-        hack_2->north_medium22();
-    } else if(choice == 5)
-    {
-        hack_2->north_tv22();
-    } else if(choice == 6)
-    {
-        hack_2->east_tv22();
-    } else if(choice == 7)
-    {
-        hack_2->west_tv22();
-    } else if(choice == 8)
-    {
-        hack_2->south_tv22();
-    } else if(choice == 9)
-    {
-        hack_2->default_cam22();
-    } else if(choice == 10)
-    {
-       processExit();
+        processExit();
     }
-
     ClearScreen();
 }
 

@@ -181,8 +181,8 @@ void camera_hack::nose_bleeds22() {
 
     if(isInitialized)
     {
-        camera_struct_22 angle = { 1.2,  -0.23, 3200, -220 };
-        set_angle_no_follow(angle);
+        camera_struct_noY angle = { 4.400000095,  -0.200000003, 2700 };
+        set_angle_follow(angle);
         isInitialized = true;
     } else
     {
@@ -197,30 +197,30 @@ void camera_hack::default_cam22()
     {
         uintptr_t game = (uintptr_t)(modInfo.lpBaseOfDll);
 
-        uintptr_t xRotate_func = game + 0x0793144;
-        uintptr_t zAxis_func = game + 0x079622E;
-        uintptr_t yAxis_func = game + 0x07939AA;
-        uintptr_t yAxis1_func = game + 0x07961D0;
+        uintptr_t xRotate_func = game + 0x793E24;
+        uintptr_t zAxis_func = game + 0x796F0E;
+        uintptr_t yAxis_func = game +  0x79468A;
+//        uintptr_t yAxis1_func = game + 0x07961D0;
 
         unsigned char xRotateArray[] =  {X_ROTATE_FUNC };
         unsigned char zArray[] = { Z_FUNC };
         unsigned char yArray[] = { Y_Tilt_FUNC };
-        unsigned char yOneArray[] = { Y_FUNC };
+//        unsigned char yOneArray[] = { Y_FUNC };
 
         unsigned char* newXRotateArr = revert_address(xRotateArray, 8);
         unsigned char *newZArray = revert_address(zArray, 6);
         unsigned char *newYArray = revert_address(yArray, 8);
-        unsigned char* newYOneArray = revert_address(yOneArray, 8);
+//        unsigned char* newYOneArray = revert_address(yOneArray, 8);
 
         WriteProcessMemory(l_handle, (LPVOID)xRotate_func, newXRotateArr, 8, nullptr);
         WriteProcessMemory(l_handle, (LPVOID)zAxis_func, newZArray, 6, nullptr);
         WriteProcessMemory(l_handle, (LPVOID)yAxis_func, newYArray, 8, nullptr);
-        WriteProcessMemory(l_handle, (LPVOID)yAxis1_func, newYOneArray, 8, nullptr);
+//        WriteProcessMemory(l_handle, (LPVOID)yAxis1_func, newYOneArray, 8, nullptr);
 
         delete [] newXRotateArr;
         delete [] newZArray;
         delete [] newYArray;
-        delete [] newYOneArray;
+//        delete [] newYOneArray;
 
         isInitialized = true;
     }
@@ -238,7 +238,6 @@ void camera_hack::hctp22()
         camera_struct_noY angle = { 0, -0.10000015, 1050 };
         set_angle_follow(angle);
         isInitialized = true;
-
     } else
     {
         isInitialized = false;
@@ -250,7 +249,7 @@ void camera_hack::ring_side22()
 {
     if(isInitialized)
     {
-        camera_struct_22 angle = { 1.9000000119, -0.001000000047, 1500, -210 };
+        camera_struct_22 angle = { 4.400000095, -0.200000003, 2700, };
         set_angle_no_follow(angle);
         isInitialized = true;
     }
@@ -264,7 +263,7 @@ void camera_hack::north_medium22()
 {
     if(isInitialized)
     {
-        camera_struct_22 angle = {  1.516670823, 0, 1500, -134 };
+        camera_struct_22 angle = {  1.516670823, 0, 1500 };
         set_angle_no_follow(angle);
         isInitialized = true;
     }
@@ -374,7 +373,7 @@ void camera_hack::set_angle_no_follow(const camera_hack::camera_struct_22 &angle
     get_offsetsHelper(address.xRotate, xRotate_address, angle.new_x_rotate);
     get_offsetsHelper(address.zAxis, zAxis_address, angle.new_z);
     get_offsetsHelper(address.yTilt, yTilt_address, angle.new_y_tilt);
-    get_offsetsHelper(address.y_axis, y_address, angle.new_y);
+//    get_offsetsHelper(address.y_axis, y_address, angle.new_y);
 
     WriteProcessMemory(l_handle, (LPVOID)xRotate_func, free_xAxis, size_of_x_function, nullptr);
     WriteProcessMemory(l_handle, (LPVOID)zAxis_func, free_zAxis, size_of_z_function, nullptr);
@@ -390,26 +389,23 @@ void camera_hack::set_angle_no_follow(const camera_hack::camera_struct_22 &angle
 void camera_hack::set_angle_follow(const camera_hack::camera_struct_noY &angle)
 {
     uintptr_t game =(uintptr_t) modInfo.lpBaseOfDll;
-    uintptr_t xRotate_address = (uintptr_t)game + 0x036ED358;
-    uintptr_t zAxis_address = (uintptr_t)game + 0x036ED358;
-    uintptr_t yTilt_address = (uintptr_t)game + 0x036ED368;
 
-    uintptr_t xRotate_func = game + 0x0793144;
-    uintptr_t zAxis_func = game + 0x079622E;
-    uintptr_t yAxis_func = game + 0x07939AA;
-    uintptr_t yAxis1_func = game + 0x07961D0;
+    uintptr_t xRotate_address = (uintptr_t)game + 0x036DED78;
+    uintptr_t zAxis_address = (uintptr_t)game + 0x036E8D90;
+    uintptr_t yTilt_address = (uintptr_t)game + 0x036E42E0;
+
+    uintptr_t xRotate_func = game + 0x793E24;
+    uintptr_t zAxis_func = game + 0x796F0E;
+    uintptr_t yAxis_func = game + 0x79468A;
 
     camera_addresses_22 address;
 
     int size_of_z_function = 6;
     int size_of_x_function = 8;
-    unsigned char yOneArray[] = { Y_FUNC };
 
     char* free_xAxis = dynamic_nop(size_of_x_function, NOP);
     char* free_zAxis = dynamic_nop(size_of_z_function, NOP);
     char* free_yAxis = dynamic_nop(size_of_x_function, NOP);
-
-    unsigned char* revert_yAxis = revert_address(yOneArray, size_of_x_function);
 
     get_offsetsHelper(address.xRotate, xRotate_address, angle.new_x_rotate);
     get_offsetsHelper(address.zAxis, zAxis_address,  angle.new_z);
@@ -418,9 +414,7 @@ void camera_hack::set_angle_follow(const camera_hack::camera_struct_noY &angle)
     WriteProcessMemory(l_handle, (LPVOID)xRotate_func, free_xAxis, size_of_x_function, nullptr);
     WriteProcessMemory(l_handle, (LPVOID)zAxis_func, free_zAxis, size_of_z_function, nullptr);
     WriteProcessMemory(l_handle, (LPVOID)yAxis_func, free_yAxis, size_of_x_function, nullptr);
-    WriteProcessMemory(l_handle, (LPVOID)yAxis1_func, revert_yAxis, size_of_x_function, nullptr);
 
-    delete [] revert_yAxis;
     delete [] free_yAxis;
     delete [] free_zAxis;
     delete [] free_xAxis;

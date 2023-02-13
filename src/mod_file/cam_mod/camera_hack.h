@@ -42,9 +42,9 @@ private:
 
     struct camera_addresses_22
     {
-        std::vector<unsigned int> xRotate = { 0x20, 0x38, 0x30, 0x18, 0x158 };
-        std::vector<unsigned int> yTilt = { 0x18, 0x0, 0x28, 0x18, 0x164 };
-        std::vector<unsigned int> zAxis = { 0x20, 0x28, 0x28, 0x18, 0x178 };
+        std::vector<unsigned int> xRotate = { 0x48, 0x370,  0x2f8 };
+        std::vector<unsigned int> yTilt = { 0xA8, 0x370, 0x304 };
+        std::vector<unsigned int> zAxis = { 0x8, 0xA0, 0x370, 0x318 };
         std::vector<unsigned int>y_axis = { 0x18, 0x0, 0x28, 0x18, 0x1314 };
     };
 
@@ -53,7 +53,6 @@ private:
         float new_x_rotate;
         float new_y_tilt;
         float new_z;
-        float new_y;
     };
 
     struct camera_struct_noY
@@ -122,7 +121,6 @@ public:
     void east_tv22();
     void south_tv22();
     void west_tv22();
-    void k_1922();
 
 };
 
